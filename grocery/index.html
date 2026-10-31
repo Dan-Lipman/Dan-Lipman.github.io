@@ -286,10 +286,10 @@
       document.getElementById("total").textContent =
         money(sum) + " · " + selected.size + " items";
       if (ready) {
-        setStatus("Marked ready — tell Grocery in chat to build the cart.", "ready");
+        setStatus("Ready for cart", "ready");
         document.getElementById("ready").textContent = "Unmark ready";
-      } else if (token()) {
-        setStatus("Checks and quantities save to your private GitHub repo as you tap.");
+      } else {
+        setStatus("");
         document.getElementById("ready").textContent = "Ready for cart";
       }
       for (const section of document.querySelectorAll("section[data-section]")) {
@@ -477,10 +477,10 @@
       document.getElementById("total").textContent =
         money(sum) + " · " + selected.size + " items";
       if (ready) {
-        setStatus("Marked ready — tell Grocery in chat to build the cart.", "ready");
+        setStatus("Ready for cart", "ready");
         document.getElementById("ready").textContent = "Unmark ready";
-      } else if (token()) {
-        setStatus("Checks and quantities save to your private GitHub repo as you tap.");
+      } else {
+        setStatus("");
         document.getElementById("ready").textContent = "Ready for cart";
       }
       for (const section of document.querySelectorAll("section[data-section]")) {
@@ -514,12 +514,12 @@
       if (!v) return;
       localStorage.setItem(TOKEN_KEY, v);
       document.getElementById("tokenInput").value = "";
-      setStatus("Testing token…");
+      setStatus("");
       try {
         await loadSelections();
         document.getElementById("setup").classList.remove("show");
         render();
-        setStatus("Token works — picks will save to " + REPO + ".");
+        setStatus("");
       } catch (e) {
         setStatus("Token test failed: " + e.message, "err");
         document.getElementById("setup").classList.add("show");
@@ -555,7 +555,7 @@
       if (!token()) {
         document.getElementById("setup").classList.add("show");
         render();
-        setStatus("Add a fine-grained GitHub token in Settings to save picks.", "err");
+        setStatus("Add GitHub token in Settings to save.", "err");
         return;
       }
       try {
