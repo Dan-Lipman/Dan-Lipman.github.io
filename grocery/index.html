@@ -60,10 +60,9 @@
     .reg.on-sale { text-decoration: line-through; font-size: 0.85rem; }
     .sale { color: var(--sale); font-weight: 700; }
     .qty-row {
-      display: none; grid-column: 2 / -1;
+      display: flex; grid-column: 2 / -1;
       align-items: center; gap: 8px; margin-top: 6px;
     }
-    .item.checked .qty-row { display: flex; }
     .qty-val { min-width: 1.5rem; text-align: center; font-weight: 600; }
     .status { font-size: 0.85rem; color: var(--muted); margin-top: 6px; white-space: pre-wrap; }
     .status.ready { color: var(--accent); font-weight: 600; }
@@ -329,7 +328,7 @@
         row.classList.toggle("checked", on);
         if (on && quantities[id] == null) quantities[id] = defaultQty(item);
         val.textContent = String(qtyOf(id, item));
-        down.disabled = !on || qtyOf(id, item) <= 1;
+        down.disabled = qtyOf(id, item) <= 1;
         recompute();
       }
 
