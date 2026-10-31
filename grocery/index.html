@@ -398,9 +398,8 @@
       const sm = document.getElementById("salesMeta");
       if (sales.valid) {
         sm.textContent =
-          "Circular " + sales.valid +
-          " · " + Object.keys(sales.matched || {}).length + " list items on sale" +
-          (sales.source ? " · " + sales.source.split(";")[0] : "");
+          "Sale week " + sales.valid +
+          " · " + Object.keys(sales.matched || {}).length + " list items on sale";
       }
       const main = document.getElementById("main");
       main.innerHTML = "";
