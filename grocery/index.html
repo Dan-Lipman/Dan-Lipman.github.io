@@ -41,32 +41,43 @@
     .count { color: var(--muted); font-weight: 500; font-size: 0.85rem; }
     .item {
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto auto;
+      grid-template-columns: 22px minmax(0, 1fr) 108px 76px;
       gap: 8px 10px;
       align-items: center;
       padding: 8px 4px;
       border-top: 1px solid var(--border);
     }
     .item:first-of-type { border-top: none; }
-    .item input[type=checkbox] { width: 18px; height: 18px; margin: 0; flex-shrink: 0; }
+    .item input[type=checkbox] { width: 18px; height: 18px; margin: 0; justify-self: center; }
     .main {
-      display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px;
-      min-width: 0;
+      display: flex; flex-wrap: nowrap; align-items: baseline; gap: 8px;
+      min-width: 0; overflow: hidden;
     }
-    .name { font-weight: 550; min-width: 0; }
-    .meta { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
-    .prices { text-align: right; font-variant-numeric: tabular-nums; min-width: 64px; }
+    .name {
+      font-weight: 550; min-width: 0;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .meta { color: var(--muted); font-size: 0.82rem; white-space: nowrap; flex-shrink: 0; }
+    .prices {
+      text-align: right; font-variant-numeric: tabular-nums;
+      width: 76px; justify-self: end;
+    }
     .reg { color: var(--muted); }
     .reg.on-sale { text-decoration: line-through; font-size: 0.85rem; }
     .sale { color: var(--sale); font-weight: 700; }
     .qty-row {
-      display: flex; align-items: center; gap: 4px; flex-shrink: 0;
+      display: grid;
+      grid-template-columns: 30px 28px 30px;
+      align-items: center;
+      justify-items: center;
+      width: 108px;
     }
-    .qty-val { min-width: 1.25rem; text-align: center; font-weight: 600; }
+    .qty-val { text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
     button.step {
       width: 30px; height: 30px; padding: 0; font-size: 1rem; line-height: 1;
       border-radius: 8px;
     }
+    button.step:disabled { opacity: 0.35; cursor: default; }
     .status { font-size: 0.85rem; color: var(--muted); margin-top: 6px; white-space: pre-wrap; }
     .status.ready { color: var(--accent); font-weight: 600; }
     .status.err { color: var(--danger); }
