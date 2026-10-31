@@ -7,7 +7,7 @@
   <style>
     :root {
       --bg: #f6f4ef; --card: #fff; --text: #1a1a1a; --muted: #6b6b6b;
-      --accent: #0b6e4f; --border: #e2ddd3;
+      --accent: #0b6e4f; --border: #e2ddd3; --danger: #a33;
     }
     * { box-sizing: border-box; }
     body {
@@ -23,7 +23,7 @@
     .sub { color: var(--muted); font-size: 0.85rem; }
     .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
     .total { font-weight: 700; font-size: 1.1rem; color: var(--accent); margin-right: auto; }
-    button {
+    button, .btn {
       border: 1px solid var(--border); background: var(--card); border-radius: 8px;
       padding: 8px 12px; cursor: pointer; font: inherit;
     }
@@ -49,7 +49,17 @@
     .price { font-variant-numeric: tabular-nums; white-space: nowrap; }
     .status { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
     .status.ready { color: var(--accent); font-weight: 600; }
-    .status.err { color: #a33; }
+    .status.err { color: var(--danger); }
+    #setup {
+      display: none; max-width: 720px; margin: 16px auto; padding: 16px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    }
+    #setup.show { display: block; }
+    #setup textarea {
+      width: 100%; min-height: 72px; font-family: ui-monospace, monospace;
+      font-size: 0.85rem; padding: 8px; border-radius: 8px; border: 1px solid var(--border);
+    }
+    #setup .warn { color: var(--danger); font-size: 0.85rem; margin: 8px 0; }
   </style>
   <script src="config.js"></script>
 </head>
@@ -59,41 +69,112 @@
     <div class="sub" id="store">Loading…</div>
     <div class="bar">
       <div class="total" id="total">$0.00</div>
+      <button type="button" id="settings" title="Token settings">Settings</button>
       <button type="button" id="clear">Clear</button>
       <button type="button" class="primary" id="ready">Ready for cart</button>
     </div>
     <div class="status" id="status"></div>
   </header>
+  <div id="setup">
+    <strong>One-time setup</strong>
+    <p class="sub">Paste a GitHub fine-grained personal access token with Contents read/write on the private repo <code>Dan-Lipman/grocery-order</code> only. It is stored in this browser only (localStorage).</p>
+    <p class="warn">Anyone with this token can change that repo. Do not reuse a broad token. On a shared phone, clear it when done if needed.</p>
+    <textarea id="tokenInput" placeholder="github_pat_…"></textarea>
+    <div class="bar" style="margin-top:8px">
+      <button type="button" class="primary" id="saveToken">Save token</button>
+      <button type="button" id="clearToken">Remove token</button>
+    </div>
+  </div>
   <main id="main"></main>
   <script>
     const CFG = window.GROCERY_CONFIG || {};
-    const API = (CFG.apiBase || "").replace(/\/$/, "");
-    const LIST_URL = CFG.listUrl || (API + "/list");
+    const REPO = CFG.repo || "Dan-Lipman/grocery-order";
+    const FILE = CFG.selectionsFile || "selections.json";
+    const LIST_URL = CFG.listUrl || "list.json";
+    const TOKEN_KEY = "grocery_gh_pat";
     const money = (n) => "$" + n.toFixed(2);
+
     let catalog = null;
     let selected = new Set();
     let ready = false;
     let priceById = {};
+    let fileSha = null;
 
-    async function api(path, opts) {
-      const url = path.startsWith("http") ? path : API + path;
-      const res = await fetch(url, opts);
-      if (!res.ok) throw new Error(await res.text());
+    function token() { return localStorage.getItem(TOKEN_KEY) || CFG.token || ""; }
+
+    function setStatus(text, cls) {
+      const st = document.getElementById("status");
+      st.textContent = text;
+      st.className = "status" + (cls ? " " + cls : "");
+    }
+
+    async function gh(path, opts = {}) {
+      const t = token();
+      if (!t) throw new Error("missing token");
+      const res = await fetch("https://api.github.com" + path, {
+        ...opts,
+        headers: {
+          Accept: "application/vnd.github+json",
+          Authorization: "Bearer " + t,
+          "X-GitHub-Api-Version": "2022-11-28",
+          ...(opts.body ? { "Content-Type": "application/json" } : {}),
+          ...(opts.headers || {}),
+        },
+      });
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(res.status + " " + err.slice(0, 200));
+      }
+      if (res.status === 204) return null;
       return res.json();
     }
+
+    function b64encode(str) {
+      return btoa(unescape(encodeURIComponent(str)));
+    }
+    function b64decode(str) {
+      return decodeURIComponent(escape(atob(str)));
+    }
+
+    async function loadSelections() {
+      const data = await gh("/repos/" + REPO + "/contents/" + FILE + "?ref=main");
+      fileSha = data.sha;
+      const sel = JSON.parse(b64decode(data.content.replace(/\n/g, "")));
+      selected = new Set(sel.selected || []);
+      ready = !!sel.ready;
+    }
+
+    async function saveSelections() {
+      const sel = {
+        selected: sorted(selected),
+        ready,
+        updated_at: new Date().toISOString(),
+      };
+      const body = {
+        message: "Update order selections",
+        content: b64encode(JSON.stringify(sel, null, 2) + "\n"),
+        branch: "main",
+      };
+      if (fileSha) body.sha = fileSha;
+      const data = await gh("/repos/" + REPO + "/contents/" + FILE, {
+        method: "PUT",
+        body: JSON.stringify(body),
+      });
+      fileSha = data.content && data.content.sha;
+      return sel;
+    }
+
+    function sorted(set) { return [...set].sort(); }
 
     function recompute() {
       let sum = 0;
       for (const id of selected) sum += priceById[id] || 0;
       document.getElementById("total").textContent = money(sum) + " · " + selected.size + " items";
-      const st = document.getElementById("status");
       if (ready) {
-        st.textContent = "Marked ready — tell Grocery in chat to build the cart.";
-        st.className = "status ready";
+        setStatus("Marked ready — tell Grocery in chat to build the cart.", "ready");
         document.getElementById("ready").textContent = "Unmark ready";
       } else {
-        st.textContent = "Checks save as you tap. Synced to your private GitHub repo.";
-        st.className = "status";
+        setStatus("Checks save to your private GitHub repo as you tap.");
         document.getElementById("ready").textContent = "Ready for cart";
       }
       for (const section of document.querySelectorAll("section[data-section]")) {
@@ -107,22 +188,15 @@
       if (checked) selected.add(id); else selected.delete(id);
       recompute();
       try {
-        const data = await api("/selections", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ toggle: id, checked }),
-        });
-        selected = new Set(data.selected || []);
-        ready = !!data.ready;
+        await saveSelections();
         recompute();
       } catch (e) {
-        document.getElementById("status").textContent = "Save failed: " + e.message;
-        document.getElementById("status").className = "status err";
+        setStatus("Save failed: " + e.message, "err");
       }
     }
 
     function render() {
-      document.getElementById("store").textContent = catalog.store || "";
+      document.getElementById("store").textContent = (catalog && catalog.store) || REPO;
       const main = document.getElementById("main");
       main.innerHTML = "";
       priceById = {};
@@ -164,43 +238,56 @@
       recompute();
     }
 
+    document.getElementById("settings").onclick = () => {
+      document.getElementById("setup").classList.toggle("show");
+    };
+    document.getElementById("saveToken").onclick = async () => {
+      const v = document.getElementById("tokenInput").value.trim();
+      if (!v) return;
+      localStorage.setItem(TOKEN_KEY, v);
+      document.getElementById("setup").classList.remove("show");
+      location.reload();
+    };
+    document.getElementById("clearToken").onclick = () => {
+      localStorage.removeItem(TOKEN_KEY);
+      document.getElementById("tokenInput").value = "";
+      setStatus("Token removed from this browser.", "err");
+    };
+
     document.getElementById("clear").onclick = async () => {
-      const data = await api("/selections/clear", { method: "POST", body: "{}" });
-      selected = new Set(data.selected || []);
-      ready = !!data.ready;
-      render();
+      selected = new Set();
+      ready = false;
+      recompute();
+      try { await saveSelections(); render(); }
+      catch (e) { setStatus("Clear failed: " + e.message, "err"); }
     };
 
     document.getElementById("ready").onclick = async () => {
-      const data = await api("/selections", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ready: !ready }),
-      });
-      selected = new Set(data.selected || []);
-      ready = !!data.ready;
+      ready = !ready;
       recompute();
+      try { await saveSelections(); recompute(); }
+      catch (e) { setStatus("Ready failed: " + e.message, "err"); }
     };
 
     (async () => {
-      if (!API && !CFG.listUrl) {
-        document.getElementById("store").textContent = "Missing config.js apiBase";
+      catalog = await fetch(LIST_URL).then(r => r.json());
+      if (!token()) {
+        document.getElementById("setup").classList.add("show");
+        document.getElementById("store").textContent = catalog.store || "";
+        render();
+        setStatus("Add a GitHub token in Settings to save picks across devices.", "err");
         return;
       }
-      catalog = LIST_URL.endsWith(".json") || LIST_URL.includes("list.json")
-        ? await fetch(LIST_URL).then(r => r.json())
-        : await api("/list");
-      // If list was raw list.json from GitHub, wrap is already full object
-      if (!catalog.sections && catalog.store) { /* ok */ }
-      const sel = await api("/selections");
-      selected = new Set(sel.selected || []);
-      ready = !!sel.ready;
-      render();
+      try {
+        await loadSelections();
+        render();
+      } catch (e) {
+        document.getElementById("setup").classList.add("show");
+        render();
+        setStatus("Could not load saved picks: " + e.message, "err");
+      }
     })().catch((e) => {
       document.getElementById("store").textContent = "Failed to load: " + e.message;
-      document.getElementById("status").textContent =
-        "If this is the phone site, the save relay on Grocery's computer may be offline.";
-      document.getElementById("status").className = "status err";
     });
   </script>
 </body>
