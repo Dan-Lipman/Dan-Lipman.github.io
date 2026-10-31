@@ -34,16 +34,6 @@
       padding: 8px 12px; cursor: pointer; font: inherit;
     }
     button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-    button.step {
-      width: 36px; height: 36px; padding: 0; font-size: 1.2rem; line-height: 1;
-      border-radius: 8px;
-    }
-    button.step:disabled { opacity: 0.35; cursor: default; }
-    main { max-width: 720px; margin: 0 auto; padding: 16px; }
-    section {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;
-    }
     section h2 {
       font-size: 0.95rem; margin: 0 0 8px; display: flex;
       justify-content: space-between; gap: 8px;
@@ -51,25 +41,32 @@
     .count { color: var(--muted); font-weight: 500; font-size: 0.85rem; }
     .item {
       display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 10px;
-      align-items: start;
-      padding: 10px 4px;
+      grid-template-columns: auto minmax(0, 1fr) auto auto;
+      gap: 8px 10px;
+      align-items: center;
+      padding: 8px 4px;
       border-top: 1px solid var(--border);
     }
     .item:first-of-type { border-top: none; }
-    .item input[type=checkbox] { margin-top: 4px; width: 18px; height: 18px; }
-    .name { font-weight: 550; }
-    .meta { color: var(--muted); font-size: 0.82rem; }
-    .prices { text-align: right; font-variant-numeric: tabular-nums; min-width: 72px; }
+    .item input[type=checkbox] { width: 18px; height: 18px; margin: 0; flex-shrink: 0; }
+    .main {
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px;
+      min-width: 0;
+    }
+    .name { font-weight: 550; min-width: 0; }
+    .meta { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
+    .prices { text-align: right; font-variant-numeric: tabular-nums; min-width: 64px; }
     .reg { color: var(--muted); }
     .reg.on-sale { text-decoration: line-through; font-size: 0.85rem; }
     .sale { color: var(--sale); font-weight: 700; }
     .qty-row {
-      display: flex; grid-column: 2 / -1;
-      align-items: center; gap: 8px; margin-top: 6px;
+      display: flex; align-items: center; gap: 4px; flex-shrink: 0;
     }
-    .qty-val { min-width: 1.5rem; text-align: center; font-weight: 600; }
+    .qty-val { min-width: 1.25rem; text-align: center; font-weight: 600; }
+    button.step {
+      width: 30px; height: 30px; padding: 0; font-size: 1rem; line-height: 1;
+      border-radius: 8px;
+    }
     .status { font-size: 0.85rem; color: var(--muted); margin-top: 6px; white-space: pre-wrap; }
     .status.ready { color: var(--accent); font-weight: 600; }
     .status.err { color: var(--danger); }
@@ -377,14 +374,16 @@
       return (
         '<div class="item" data-id="' + item.id + '">' +
         '<input type="checkbox" data-id="' + item.id + '" />' +
-        "<div><div class=\"name\">" + item.name +
+        '<div class="main"><span class="name">' + item.name +
         (onSale ? '<span class="badge">SALE</span>' : "") +
-        "</div><div class=\"meta\">" + bits.join(" · ") + "</div>" +
+        "</span>" +
+        (bits.length ? '<span class="meta">' + bits.join(" · ") + "</span>" : "") +
+        "</div>" +
         '<div class="qty-row">' +
         '<button type="button" class="step" data-down aria-label="Decrease">▾</button>' +
         '<span class="qty-val" data-qty>1</span>' +
         '<button type="button" class="step" data-up aria-label="Increase">▴</button>' +
-        '<span class="meta">qty</span></div></div>' +
+        "</div>" +
         renderPrices(item.id, item) +
         "</div>"
       );
