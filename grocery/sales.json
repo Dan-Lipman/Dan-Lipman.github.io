@@ -124,30 +124,6 @@
   },
   "suggestions": [
     {
-      "name": "Stop & Shop Pasta",
-      "sale": {
-        "price": 0.88,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$0.88",
-        "unit_price": 0.88
-      },
-      "flyer_item_id": 1048875592,
-      "raw": "Stop & Shop Pasta. $0.88"
-    },
-    {
-      "name": "Stop & Shop Vegetables or Tomatoes",
-      "sale": {
-        "price": 0.88,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$0.88",
-        "unit_price": 0.88
-      },
-      "flyer_item_id": 1048874723,
-      "raw": "Stop & Shop Vegetables or Tomatoes. $0.88"
-    },
-    {
       "name": "Stop & Shop Chicken Drumsticks or Thighs",
       "sale": {
         "price": 0.99,
@@ -158,18 +134,6 @@
       },
       "flyer_item_id": 1048874949,
       "raw": "Stop & Shop Chicken Drumsticks or Thighs. $0.99 /LB"
-    },
-    {
-      "name": "Hunt's Pasta Sauce",
-      "sale": {
-        "price": 5.0,
-        "qty_for": 4,
-        "unit": "EA",
-        "display": "4/ $5.0",
-        "unit_price": 1.25
-      },
-      "flyer_item_id": 1048876317,
-      "raw": "Hunt's Pasta Sauce. 4/ $5.0"
     },
     {
       "name": "Fage Total Yogurt",
@@ -184,66 +148,6 @@
       "raw": "Fage Total Yogurt. 4/ $5.0"
     },
     {
-      "name": "No Yolks or Penn Dutch Egg Noodles. FINAL PRICE",
-      "sale": {
-        "price": 1.49,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$1.49",
-        "unit_price": 1.49
-      },
-      "flyer_item_id": 1048871139,
-      "raw": "No Yolks or Penn Dutch Egg Noodles. FINAL PRICE $1.49 DIGITAL COUPON"
-    },
-    {
-      "name": "Ro-Tel Diced Tomatoes",
-      "sale": {
-        "price": 1.79,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$1.79",
-        "unit_price": 1.79
-      },
-      "flyer_item_id": 1048876383,
-      "raw": "Ro-Tel Diced Tomatoes. $1.79"
-    },
-    {
-      "name": "Bertolli Pasta or Alfredo Sauce",
-      "sale": {
-        "price": 1.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$1.99",
-        "unit_price": 1.99
-      },
-      "flyer_item_id": 1048875306,
-      "raw": "Bertolli Pasta or Alfredo Sauce. $1.99"
-    },
-    {
-      "name": "Lay's or Lay's Kettle Chips. FINAL PRICE",
-      "sale": {
-        "price": 1.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$1.99 /EA",
-        "unit_price": 1.99
-      },
-      "flyer_item_id": 1048871533,
-      "raw": "Lay's or Lay's Kettle Chips. FINAL PRICE $1.99 /EA. DIGITAL COUPON WHEN YOU BUY 2"
-    },
-    {
-      "name": "Stop & Shop Pasta Sauce",
-      "sale": {
-        "price": 1.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$1.99",
-        "unit_price": 1.99
-      },
-      "flyer_item_id": 1048876462,
-      "raw": "Stop & Shop Pasta Sauce. $1.99"
-    },
-    {
       "name": "Perdue Breaded Chicken Nuggets, Strips or Cutlets",
       "sale": {
         "price": 5.0,
@@ -254,42 +158,6 @@
       },
       "flyer_item_id": 1048875619,
       "raw": "Perdue Breaded Chicken Nuggets, Strips or Cutlets. 2/ $5.0"
-    },
-    {
-      "name": "Ocean Spray Cranberry Sauce or Craisins",
-      "sale": {
-        "price": 5.0,
-        "qty_for": 2,
-        "unit": "EA",
-        "display": "2/ $5.0",
-        "unit_price": 2.5
-      },
-      "flyer_item_id": 1048876253,
-      "raw": "Ocean Spray Cranberry Sauce or Craisins. 2/ $5.0"
-    },
-    {
-      "name": "Pop-Tarts or Rice Krispies Treats",
-      "sale": {
-        "price": 5.0,
-        "qty_for": 2,
-        "unit": "EA",
-        "display": "2/ $5.0",
-        "unit_price": 2.5
-      },
-      "flyer_item_id": 1048876277,
-      "raw": "Pop-Tarts or Rice Krispies Treats. 2/ $5.0"
-    },
-    {
-      "name": "Organic Honeycrisp Apples",
-      "sale": {
-        "price": 2.88,
-        "qty_for": 1,
-        "unit": "LB",
-        "display": "$2.88 /lb",
-        "unit_price": 2.88
-      },
-      "flyer_item_id": 1048870242,
-      "raw": "Organic Honeycrisp Apples. $2.88 /lb"
     },
     {
       "name": "Nature's Promise Organic Hummus",
@@ -304,28 +172,64 @@
       "raw": "Nature's Promise Organic Hummus. $2.99 /ea"
     },
     {
-      "name": "Hoffman's Cheddar Cheese. FINAL PRICE",
+      "name": "Perdue Chicken Wingettes",
       "sale": {
         "price": 2.99,
         "qty_for": 1,
-        "unit": "EA",
-        "display": "$2.99 /EA",
+        "unit": "LB",
+        "display": "$2.99 /lb",
         "unit_price": 2.99
       },
-      "flyer_item_id": 1048871371,
-      "raw": "Hoffman's Cheddar Cheese. FINAL PRICE $2.99 /EA. DIGITAL COUPON"
+      "flyer_item_id": 1048870029,
+      "raw": "Perdue Chicken Wingettes. $2.99 /lb"
     },
     {
-      "name": "Rana Pasta or Sauce. FINAL PRICE",
+      "name": "Stop & Shop Vegetables or Tomatoes",
       "sale": {
-        "price": 2.99,
+        "price": 0.88,
         "qty_for": 1,
         "unit": "EA",
-        "display": "$2.99 /EA",
-        "unit_price": 2.99
+        "display": "$0.88",
+        "unit_price": 0.88
       },
-      "flyer_item_id": 1048872177,
-      "raw": "Rana Pasta or Sauce. FINAL PRICE $2.99 /EA. DIGITAL COUPON"
+      "flyer_item_id": 1048874723,
+      "raw": "Stop & Shop Vegetables or Tomatoes. $0.88"
+    },
+    {
+      "name": "Ro-Tel Diced Tomatoes",
+      "sale": {
+        "price": 1.79,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.79",
+        "unit_price": 1.79
+      },
+      "flyer_item_id": 1048876383,
+      "raw": "Ro-Tel Diced Tomatoes. $1.79"
+    },
+    {
+      "name": "Ocean Spray Cranberry Sauce or Craisins",
+      "sale": {
+        "price": 5.0,
+        "qty_for": 2,
+        "unit": "EA",
+        "display": "2/ $5.0",
+        "unit_price": 2.5
+      },
+      "flyer_item_id": 1048876253,
+      "raw": "Ocean Spray Cranberry Sauce or Craisins. 2/ $5.0"
+    },
+    {
+      "name": "Organic Honeycrisp Apples",
+      "sale": {
+        "price": 2.88,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$2.88 /lb",
+        "unit_price": 2.88
+      },
+      "flyer_item_id": 1048870242,
+      "raw": "Organic Honeycrisp Apples. $2.88 /lb"
     },
     {
       "name": "Pepperidge Farm Farmhouse Bread, Buns or Dinner Rolls",
@@ -340,16 +244,88 @@
       "raw": "Pepperidge Farm Farmhouse Bread, Buns or Dinner Rolls. $2.99"
     },
     {
-      "name": "Perdue Chicken Wingettes",
+      "name": "No Yolks or Penn Dutch Egg Noodles. FINAL PRICE",
+      "sale": {
+        "price": 1.49,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.49",
+        "unit_price": 1.49
+      },
+      "flyer_item_id": 1048871139,
+      "raw": "No Yolks or Penn Dutch Egg Noodles. FINAL PRICE $1.49 DIGITAL COUPON"
+    },
+    {
+      "name": "Stop & Shop Pasta",
+      "sale": {
+        "price": 0.88,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$0.88",
+        "unit_price": 0.88
+      },
+      "flyer_item_id": 1048875592,
+      "raw": "Stop & Shop Pasta. $0.88"
+    },
+    {
+      "name": "Hunt's Pasta Sauce",
+      "sale": {
+        "price": 5.0,
+        "qty_for": 4,
+        "unit": "EA",
+        "display": "4/ $5.0",
+        "unit_price": 1.25
+      },
+      "flyer_item_id": 1048876317,
+      "raw": "Hunt's Pasta Sauce. 4/ $5.0"
+    },
+    {
+      "name": "Bertolli Pasta or Alfredo Sauce",
+      "sale": {
+        "price": 1.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.99",
+        "unit_price": 1.99
+      },
+      "flyer_item_id": 1048875306,
+      "raw": "Bertolli Pasta or Alfredo Sauce. $1.99"
+    },
+    {
+      "name": "Stop & Shop Pasta Sauce",
+      "sale": {
+        "price": 1.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.99",
+        "unit_price": 1.99
+      },
+      "flyer_item_id": 1048876462,
+      "raw": "Stop & Shop Pasta Sauce. $1.99"
+    },
+    {
+      "name": "Pop-Tarts or Rice Krispies Treats",
+      "sale": {
+        "price": 5.0,
+        "qty_for": 2,
+        "unit": "EA",
+        "display": "2/ $5.0",
+        "unit_price": 2.5
+      },
+      "flyer_item_id": 1048876277,
+      "raw": "Pop-Tarts or Rice Krispies Treats. 2/ $5.0"
+    },
+    {
+      "name": "Rana Pasta or Sauce. FINAL PRICE",
       "sale": {
         "price": 2.99,
         "qty_for": 1,
-        "unit": "LB",
-        "display": "$2.99 /lb",
+        "unit": "EA",
+        "display": "$2.99 /EA",
         "unit_price": 2.99
       },
-      "flyer_item_id": 1048870029,
-      "raw": "Perdue Chicken Wingettes. $2.99 /lb"
+      "flyer_item_id": 1048872177,
+      "raw": "Rana Pasta or Sauce. FINAL PRICE $2.99 /EA. DIGITAL COUPON"
     },
     {
       "name": "Stop & Shop Yellow or Mini Potatoes or Sweet Onions",
@@ -362,6 +338,31 @@
       },
       "flyer_item_id": 1048875291,
       "raw": "Stop & Shop Yellow or Mini Potatoes or Sweet Onions. 2/ $6.0"
+    },
+    {
+      "name": "Lay's or Lay's Kettle Chips. FINAL PRICE",
+      "sale": {
+        "price": 1.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.99 /EA",
+        "unit_price": 1.99
+      },
+      "flyer_item_id": 1048871533,
+      "raw": "Lay's or Lay's Kettle Chips. FINAL PRICE $1.99 /EA. DIGITAL COUPON WHEN YOU BUY 2"
+    },
+    {
+      "name": "Hoffman's Cheddar Cheese. FINAL PRICE",
+      "sale": {
+        "price": 2.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$2.99 /EA",
+        "unit_price": 2.99
+      },
+      "flyer_item_id": 1048871371,
+      "raw": "Hoffman's Cheddar Cheese. FINAL PRICE $2.99 /EA. DIGITAL COUPON"
     }
-  ]
+  ],
+  "ranking_note": "Ranked for Dan meal plan (LDL/heart-healthy); not shown on page"
 }
