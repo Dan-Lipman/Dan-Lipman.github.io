@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stop & Shop order</title>
+  <style>
+    :root {
+      --bg: #f6f4ef; --card: #fff; --text: #1a1a1a; --muted: #6b6b6b;
+      --accent: #0b6e4f; --border: #e2ddd3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.4;
+    }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(246,244,239,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border); padding: 12px 16px;
+    }
+    h1 { font-size: 1.15rem; margin: 0 0 4px; }
+    .sub { color: var(--muted); font-size: 0.85rem; }
+    .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+    .total { font-weight: 700; font-size: 1.1rem; color: var(--accent); margin-right: auto; }
+    button {
+      border: 1px solid var(--border); background: var(--card); border-radius: 8px;
+      padding: 8px 12px; cursor: pointer; font: inherit;
+    }
+    button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    main { max-width: 720px; margin: 0 auto; padding: 16px; }
+    section {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;
+    }
+    section h2 {
+      font-size: 0.95rem; margin: 0 0 8px; display: flex;
+      justify-content: space-between; gap: 8px;
+    }
+    .count { color: var(--muted); font-weight: 500; font-size: 0.85rem; }
+    label.item {
+      display: grid; grid-template-columns: auto 1fr auto; gap: 10px;
+      align-items: start; padding: 8px 4px; border-top: 1px solid var(--border); cursor: pointer;
+    }
+    label.item:first-of-type { border-top: none; }
+    label.item input { margin-top: 3px; width: 18px; height: 18px; }
+    .name { font-weight: 550; }
+    .meta { color: var(--muted); font-size: 0.82rem; }
+    .price { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .status { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+    .status.ready { color: var(--accent); font-weight: 600; }
+    .status.err { color: #a33; }
+  </style>
+  <script src="config.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Stop & Shop order</h1>
+    <div class="sub" id="store">Loading…</div>
+    <div class="bar">
+      <div class="total" id="total">$0.00</div>
+      <button type="button" id="clear">Clear</button>
+      <button type="button" class="primary" id="ready">Ready for cart</button>
+    </div>
+    <div class="status" id="status"></div>
+  </header>
+  <main id="main"></main>
+  <script>
+    const CFG = window.GROCERY_CONFIG || {};
+    const API = (CFG.apiBase || "").replace(/\/$/, "");
+    const LIST_URL = CFG.listUrl || (API + "/list");
+    const money = (n) => "$" + n.toFixed(2);
+    let catalog = null;
+    let selected = new Set();
+    let ready = false;
+    let priceById = {};
+
+    async function api(path, opts) {
+      const url = path.startsWith("http") ? path : API + path;
+      const res = await fetch(url, opts);
+      if (!res.ok) throw new Error(await res.text());
+      return res.json();
+    }
+
+    function recompute() {
+      let sum = 0;
+      for (const id of selected) sum += priceById[id] || 0;
+      document.getElementById("total").textContent = money(sum) + " · " + selected.size + " items";
+      const st = document.getElementById("status");
+      if (ready) {
+        st.textContent = "Marked ready — tell Grocery in chat to build the cart.";
+        st.className = "status ready";
+        document.getElementById("ready").textContent = "Unmark ready";
+      } else {
+        st.textContent = "Checks save as you tap. Synced to your private GitHub repo.";
+        st.className = "status";
+        document.getElementById("ready").textContent = "Ready for cart";
+      }
+      for (const section of document.querySelectorAll("section[data-section]")) {
+        const ids = [...section.querySelectorAll("input[type=checkbox]")].map(i => i.dataset.id);
+        const n = ids.filter(id => selected.has(id)).length;
+        section.querySelector(".count").textContent = n + "/" + ids.length;
+      }
+    }
+
+    async function toggle(id, checked) {
+      if (checked) selected.add(id); else selected.delete(id);
+      recompute();
+      try {
+        const data = await api("/selections", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ toggle: id, checked }),
+        });
+        selected = new Set(data.selected || []);
+        ready = !!data.ready;
+        recompute();
+      } catch (e) {
+        document.getElementById("status").textContent = "Save failed: " + e.message;
+        document.getElementById("status").className = "status err";
+      }
+    }
+
+    function render() {
+      document.getElementById("store").textContent = catalog.store || "";
+      const main = document.getElementById("main");
+      main.innerHTML = "";
+      priceById = {};
+      for (const section of catalog.sections) {
+        const el = document.createElement("section");
+        el.dataset.section = section.id;
+        const h2 = document.createElement("h2");
+        h2.innerHTML = "<span>" + section.title + "</span><span class=\"count\"></span>";
+        el.appendChild(h2);
+        for (const item of section.items) {
+          priceById[item.id] = Number(item.price) || 0;
+          const label = document.createElement("label");
+          label.className = "item";
+          const cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.dataset.id = item.id;
+          cb.checked = selected.has(item.id);
+          cb.addEventListener("change", () => toggle(item.id, cb.checked));
+          const mid = document.createElement("div");
+          const name = document.createElement("div");
+          name.className = "name";
+          name.textContent = item.name;
+          const meta = document.createElement("div");
+          meta.className = "meta";
+          const bits = [];
+          if (item.qty) bits.push(item.qty);
+          if (item.who) bits.push(item.who);
+          if (item.note) bits.push(item.note);
+          meta.textContent = bits.join(" · ");
+          mid.appendChild(name); mid.appendChild(meta);
+          const price = document.createElement("div");
+          price.className = "price";
+          price.textContent = money(Number(item.price) || 0);
+          label.appendChild(cb); label.appendChild(mid); label.appendChild(price);
+          el.appendChild(label);
+        }
+        main.appendChild(el);
+      }
+      recompute();
+    }
+
+    document.getElementById("clear").onclick = async () => {
+      const data = await api("/selections/clear", { method: "POST", body: "{}" });
+      selected = new Set(data.selected || []);
+      ready = !!data.ready;
+      render();
+    };
+
+    document.getElementById("ready").onclick = async () => {
+      const data = await api("/selections", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ready: !ready }),
+      });
+      selected = new Set(data.selected || []);
+      ready = !!data.ready;
+      recompute();
+    };
+
+    (async () => {
+      if (!API && !CFG.listUrl) {
+        document.getElementById("store").textContent = "Missing config.js apiBase";
+        return;
+      }
+      catalog = LIST_URL.endsWith(".json") || LIST_URL.includes("list.json")
+        ? await fetch(LIST_URL).then(r => r.json())
+        : await api("/list");
+      // If list was raw list.json from GitHub, wrap is already full object
+      if (!catalog.sections && catalog.store) { /* ok */ }
+      const sel = await api("/selections");
+      selected = new Set(sel.selected || []);
+      ready = !!sel.ready;
+      render();
+    })().catch((e) => {
+      document.getElementById("store").textContent = "Failed to load: " + e.message;
+      document.getElementById("status").textContent =
+        "If this is the phone site, the save relay on Grocery's computer may be offline.";
+      document.getElementById("status").className = "status err";
+    });
+  </script>
+</body>
+</html>

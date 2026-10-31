@@ -1,0 +1,105 @@
+{
+  "store": "Stop & Shop #631 · 215 Glastonbury Blvd",
+  "sections": [
+    {
+      "id": "core",
+      "title": "Every trip (core)",
+      "items": [
+        {"id": "core-bananas", "name": "Bananas", "qty": "~0.81 lb", "price": 0.50, "who": null},
+        {"id": "core-strawberries", "name": "Strawberries, 1 lb", "qty": "2", "price": 8.98, "who": null},
+        {"id": "core-blueberries", "name": "Blueberries, pint", "qty": "2", "price": 7.98, "who": null},
+        {"id": "core-raspberries", "name": "Raspberries, 6 oz", "qty": "1", "price": 4.39, "who": null},
+        {"id": "core-avocados", "name": "Hass avocados", "qty": "3", "price": 3.75, "who": null},
+        {"id": "core-red-peppers", "name": "Red bell peppers", "qty": "1–2", "price": 2.74, "who": null},
+        {"id": "core-pears", "name": "Bartlett pears", "qty": "~1.02 lb", "price": 2.19, "who": null},
+        {"id": "core-cucumbers", "name": "English cucumbers", "qty": "2", "price": 2.98, "who": null},
+        {"id": "core-turkey", "name": "Boar's Head no-salt-added turkey", "qty": "1", "price": 8.83, "who": "Dan", "note": "If out, lower-sodium"},
+        {"id": "core-skim", "name": "Fairlife skim milk", "qty": "1", "price": 6.44, "who": "Layla"},
+        {"id": "core-2pct", "name": "Fairlife 2% milk", "qty": "1", "price": 6.19, "who": "Layla"},
+        {"id": "core-pasta", "name": "Ronzoni elbows (or store-brand rigatoni)", "qty": "1", "price": 1.37, "who": "Layla"}
+      ]
+    },
+    {
+      "id": "trip-a",
+      "title": "Trip A (every other)",
+      "items": [
+        {"id": "a-org-straw", "name": "Organic strawberries, 1 lb", "qty": "1", "price": 6.49, "who": null},
+        {"id": "a-apples", "name": "Gala apples", "qty": "~1.71 lb", "price": 3.17, "who": null},
+        {"id": "a-broccoli", "name": "Broccoli crowns", "qty": "~1 lb", "price": 2.49, "who": null},
+        {"id": "a-sweet-potato", "name": "Sweet potatoes", "qty": "~2.2 lb", "price": 1.55, "who": null},
+        {"id": "a-guac", "name": "Homestyle guacamole", "qty": "1", "price": 5.99, "who": null},
+        {"id": "a-beef", "name": "Nature's Promise 90% grass-fed ground beef", "qty": "2", "price": 14.98, "who": null},
+        {"id": "a-eggs", "name": "Stop & Shop large eggs", "qty": "1", "price": 6.44, "who": null},
+        {"id": "a-bread", "name": "Bakery 5-seed Tuscan bread, 20 oz", "qty": "1", "price": 5.49, "who": null},
+        {"id": "a-beans", "name": "Nature's Promise organic black beans (no salt added if available)", "qty": "2", "price": 2.98, "who": null},
+        {"id": "a-corn", "name": "Canned corn, no salt added (else low-sodium)", "qty": "1–2", "price": 1.88, "who": null},
+        {"id": "a-jovial", "name": "Jovial brown rice pasta", "qty": "1", "price": 3.99, "who": "Jessica", "note": "check label"},
+        {"id": "a-carbone", "name": "Carbone sauce, 24 oz", "qty": "1", "price": 5.99, "who": null},
+        {"id": "a-siete", "name": "Siete tortilla chips, lime", "qty": "1", "price": 4.49, "who": "Jessica", "note": "check label"},
+        {"id": "a-cheerios", "name": "Cheerios", "qty": "2", "price": 6.98, "who": null}
+      ]
+    },
+    {
+      "id": "trip-b",
+      "title": "Trip B (every other)",
+      "items": [
+        {"id": "b-onion", "name": "Sweet onion", "qty": "~0.89 lb", "price": 1.53, "who": null},
+        {"id": "b-orange-pepper", "name": "Orange bell pepper", "qty": "1", "price": 1.37, "who": null},
+        {"id": "b-grapes", "name": "Red seedless grapes", "qty": "~2.08 lb", "price": 4.75, "who": null},
+        {"id": "b-carrots", "name": "Baby peeled carrots, 1 lb", "qty": "1", "price": 1.25, "who": null},
+        {"id": "b-green-pepper", "name": "Green bell pepper", "qty": "1", "price": 0.99, "who": null},
+        {"id": "b-plum", "name": "Plum tomatoes", "qty": "~0.67 lb", "price": 1.33, "who": null},
+        {"id": "b-eggplant", "name": "Eggplant", "qty": "~1 lb", "price": 1.13, "who": null},
+        {"id": "b-beets", "name": "Love Beets baby beets", "qty": "1", "price": 3.99, "who": null},
+        {"id": "b-salsa", "name": "Mitchell's restaurant-style salsa", "qty": "1", "price": 3.99, "who": null},
+        {"id": "b-turkey", "name": "Shady Brook Farms 93% lean ground turkey, 1.3 lb", "qty": "1", "price": 8.49, "who": null},
+        {"id": "b-hummus", "name": "Hummus with olive oil", "qty": "2", "price": 13.98, "who": null},
+        {"id": "b-yogurt-straw", "name": "Strawberry protein Greek yogurt, 16 oz", "qty": "1", "price": 3.00, "who": null},
+        {"id": "b-yogurt-banana", "name": "Banana yogurt, 14 oz", "qty": "1", "price": 7.49, "who": null},
+        {"id": "b-tuna", "name": "Bumble Bee solid white tuna", "qty": "1–2", "price": 2.50, "who": "Jessica", "note": "check label"},
+        {"id": "b-rice", "name": "Ben's Original Ready Rice", "qty": "1–2", "price": 3.98, "who": null},
+        {"id": "b-peas", "name": "Canned peas, no salt added (else low-sodium)", "qty": "1", "price": 2.29, "who": null},
+        {"id": "b-coffee", "name": "Dunkin' Original Blend whole bean coffee", "qty": "1", "price": 7.99, "who": null},
+        {"id": "b-pistachios", "name": "Wonderful shelled pistachios", "qty": "1", "price": 6.99, "who": null},
+        {"id": "b-simple-mills", "name": "Simple Mills sea salt crackers, 4.25 oz", "qty": "1–2", "price": 10.78, "who": "Jessica", "note": "check label"},
+        {"id": "b-puffed", "name": "Stop & Shop Puffed Wheat cereal, 6 oz", "qty": "1", "price": 2.29, "who": null}
+      ]
+    },
+    {
+      "id": "add",
+      "title": "Add as needed",
+      "items": [
+        {"id": "add-red-pears", "name": "Red pears", "qty": "~1.09 lb", "price": 1.90, "who": null},
+        {"id": "add-euro-cuke", "name": "European cucumber", "qty": "1", "price": 1.99, "who": null},
+        {"id": "add-green-grapes", "name": "Green grapes", "qty": "~1.81 lb", "price": 4.22, "who": null},
+        {"id": "add-mangoes", "name": "Honey mangoes", "qty": "2–3", "price": 5.70, "who": null},
+        {"id": "add-wild-tomatoes", "name": "Wild Wonders tomatoes", "qty": "1", "price": 5.00, "who": null},
+        {"id": "add-mini-cuke", "name": "Mini cucumbers, 14 oz", "qty": "1–2", "price": 5.00, "who": null},
+        {"id": "add-lemons", "name": "Lemons", "qty": "1–2", "price": 1.24, "who": null},
+        {"id": "add-oranges", "name": "Cara Cara oranges", "qty": "2", "price": 2.12, "who": null},
+        {"id": "add-maple-turkey", "name": "Boar's Head maple honey turkey", "qty": "1", "price": 8.50, "who": null},
+        {"id": "add-parmalat", "name": "Parmalat shelf-stable milk, 32 oz", "qty": "1", "price": 2.99, "who": "Layla"},
+        {"id": "add-ss-2pct", "name": "Stop & Shop 2% milk", "qty": "1", "price": 4.19, "who": "Layla"},
+        {"id": "add-lactaid", "name": "Lactaid 1% lactose-free milk, 64 oz", "qty": "1", "price": 4.99, "who": "Layla"},
+        {"id": "add-cherry-yogurt", "name": "Cherry yogurt, 14 oz", "qty": "1", "price": 7.49, "who": null},
+        {"id": "add-flatbread", "name": "Absolutely Gluten Free flatbread, everything", "qty": "1", "price": 5.49, "who": "Jessica", "note": "check label"},
+        {"id": "add-enjoy-life", "name": "Enjoy Life mini chocolate chips", "qty": "1", "price": 7.74, "who": "Jessica", "note": "check label"},
+        {"id": "add-crofters", "name": "Crofter's organic fruit spread", "qty": "1", "price": 4.49, "who": null},
+        {"id": "add-vodka-sauce", "name": "Carbone vodka sauce", "qty": "1", "price": 6.39, "who": null},
+        {"id": "add-ss-salsa", "name": "Stop & Shop thick & chunky salsa", "qty": "1", "price": 2.69, "who": null},
+        {"id": "add-peanuts", "name": "Planters peanuts, 16 oz", "qty": "1–2", "price": 6.00, "who": null},
+        {"id": "add-good-thins", "name": "Good Thins sesame", "qty": "1", "price": 3.99, "who": null},
+        {"id": "add-santitas", "name": "Santitas jalapeño tortilla chips", "qty": "1", "price": 2.75, "who": null},
+        {"id": "add-triscuit", "name": "Triscuit Hint of Salt", "qty": "1–2", "price": 6.78, "who": null},
+        {"id": "add-cape-cod", "name": "Cape Cod lightly salted chips, 8 oz", "qty": "1", "price": 3.99, "who": null},
+        {"id": "add-thin-stackers", "name": "Thin Stackers rice cakes", "qty": "1", "price": 4.49, "who": "Jessica", "note": "check label"},
+        {"id": "add-sweet-thins", "name": "Simple Mills Sweet Thins", "qty": "1", "price": 5.29, "who": "Jessica", "note": "check label"},
+        {"id": "add-talenti", "name": "Talenti chocolate peanut butter gelato", "qty": "1", "price": 4.00, "who": null},
+        {"id": "add-evo", "name": "Evolution Fresh fruit & greens juice, 11 oz", "qty": "1", "price": 3.00, "who": null},
+        {"id": "add-pineapple", "name": "Lakewood pineapple juice, 32 oz", "qty": "1", "price": 6.99, "who": null},
+        {"id": "add-aloe", "name": "Solti aloe drink, 14.9 oz", "qty": "1", "price": 3.50, "who": null},
+        {"id": "add-spirulina", "name": "Solti spirulina drink, 14.9 oz", "qty": "1", "price": 3.99, "who": null}
+      ]
+    }
+  ]
+}
