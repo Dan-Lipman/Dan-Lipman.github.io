@@ -125,31 +125,43 @@
       return status + " " + body;
     }
 
+    let saveChain = Promise.resolve();
+
+    function enqueueSave(fn) {
+      saveChain = saveChain.then(fn, fn);
+      return saveChain;
+    }
+
     async function gh(path, opts = {}) {
       const t = token();
       if (!t) throw new Error("missing token — open Settings and paste your fine-grained PAT");
       const res = await fetch("https://api.github.com" + path, {
         ...opts,
+        cache: "no-store",
         headers: {
           Accept: "application/vnd.github+json",
           Authorization: "Bearer " + t,
           "X-GitHub-Api-Version": "2022-11-28",
+          "Cache-Control": "no-cache",
+          Pragma: "no-cache",
           ...(opts.body ? { "Content-Type": "application/json" } : {}),
           ...(opts.headers || {}),
         },
       });
-      const text = await res.text();
+      const textBody = await res.text();
       if (!res.ok) {
-        let body = text.slice(0, 300);
+        let body = textBody.slice(0, 300);
         try {
-          const j = JSON.parse(text);
+          const j = JSON.parse(textBody);
           body = j.message || body;
           if (j.errors && j.errors.length) body += " — " + JSON.stringify(j.errors);
         } catch (_) {}
-        throw new Error(explainAuthError(res.status, body));
+        const err = new Error(explainAuthError(res.status, body));
+        err.status = res.status;
+        throw err;
       }
-      if (res.status === 204 || !text) return null;
-      return JSON.parse(text);
+      if (res.status === 204 || !textBody) return null;
+      return JSON.parse(textBody);
     }
 
     function b64encode(str) {
@@ -165,7 +177,9 @@
     }
 
     async function refreshSha() {
-      const data = await gh("/repos/" + REPO + "/contents/" + FILE + "?ref=main");
+      const data = await gh(
+        "/repos/" + REPO + "/contents/" + FILE + "?ref=main&ts=" + Date.now()
+      );
       fileSha = data.sha;
       return data;
     }
@@ -177,13 +191,11 @@
       ready = !!sel.ready;
     }
 
-    async function saveSelections() {
-      // Always refresh sha so we never PUT without a current sha for an existing file
+    async function saveSelectionsOnce() {
       try {
         await refreshSha();
       } catch (e) {
-        // If file missing (404), create without sha
-        if (!String(e.message).includes("404")) throw e;
+        if (e.status !== 404 && !String(e.message).includes("404")) throw e;
         fileSha = null;
       }
       const sel = {
@@ -205,7 +217,27 @@
       return sel;
     }
 
+    async function saveSelections() {
+      let lastErr;
+      for (let attempt = 0; attempt < 4; attempt++) {
+        try {
+          return await saveSelectionsOnce();
+        } catch (e) {
+          lastErr = e;
+          const msg = String(e.message || "");
+          if (e.status === 409 || msg.includes("409") || /does not match/i.test(msg)) {
+            fileSha = null;
+            await new Promise((r) => setTimeout(r, 150 * (attempt + 1)));
+            continue;
+          }
+          throw e;
+        }
+      }
+      throw lastErr;
+    }
+
     function recompute() {
+
       let sum = 0;
       for (const id of selected) sum += priceById[id] || 0;
       document.getElementById("total").textContent = money(sum) + " · " + selected.size + " items";
@@ -227,7 +259,7 @@
       if (checked) selected.add(id); else selected.delete(id);
       recompute();
       try {
-        await saveSelections();
+        await enqueueSave(() => saveSelections());
         recompute();
       } catch (e) {
         setStatus("Save failed: " + e.message, "err");
@@ -307,14 +339,14 @@
       selected = new Set();
       ready = false;
       recompute();
-      try { await saveSelections(); render(); }
+      try { await enqueueSave(() => saveSelections()); render(); }
       catch (e) { setStatus("Clear failed: " + e.message, "err"); }
     };
 
     document.getElementById("ready").onclick = async () => {
       ready = !ready;
       recompute();
-      try { await saveSelections(); recompute(); }
+      try { await enqueueSave(() => saveSelections()); recompute(); }
       catch (e) { setStatus("Ready failed: " + e.message, "err"); }
     };
 
