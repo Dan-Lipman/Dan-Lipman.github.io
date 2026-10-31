@@ -374,9 +374,6 @@
       if (item.qty) bits.push(item.qty);
       if (item.who) bits.push(item.who);
       if (item.note) bits.push(item.note);
-      if (onSale && sales.matched[item.id].circular_name) {
-        bits.push("circular: " + sales.matched[item.id].circular_name);
-      }
       return (
         '<div class="item" data-id="' + item.id + '">' +
         '<input type="checkbox" data-id="' + item.id + '" />' +
