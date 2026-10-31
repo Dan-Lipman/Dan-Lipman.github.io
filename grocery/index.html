@@ -142,8 +142,6 @@
           Accept: "application/vnd.github+json",
           Authorization: "Bearer " + t,
           "X-GitHub-Api-Version": "2022-11-28",
-          "Cache-Control": "no-cache",
-          Pragma: "no-cache",
           ...(opts.body ? { "Content-Type": "application/json" } : {}),
           ...(opts.headers || {}),
         },
