@@ -43,24 +43,25 @@
       display: grid;
       grid-template-columns: 22px minmax(0, 1fr) 108px 76px;
       gap: 8px 10px;
-      align-items: center;
+      align-items: start;
       padding: 8px 4px;
       border-top: 1px solid var(--border);
     }
     .item:first-of-type { border-top: none; }
-    .item input[type=checkbox] { width: 18px; height: 18px; margin: 0; justify-self: center; }
+    .item input[type=checkbox] { width: 18px; height: 18px; margin: 6px 0 0; justify-self: center; }
     .main {
-      display: flex; flex-wrap: nowrap; align-items: baseline; gap: 8px;
-      min-width: 0; overflow: hidden;
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px;
+      min-width: 0;
     }
     .name {
       font-weight: 550; min-width: 0;
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      white-space: normal; overflow-wrap: anywhere; line-height: 1.25;
     }
     .meta { color: var(--muted); font-size: 0.82rem; white-space: nowrap; flex-shrink: 0; }
     .prices {
       text-align: right; font-variant-numeric: tabular-nums;
       width: 76px; justify-self: end;
+      margin-top: 4px;
     }
     .reg { color: var(--muted); }
     .reg.on-sale { text-decoration: line-through; font-size: 0.85rem; }
@@ -71,6 +72,7 @@
       align-items: center;
       justify-items: center;
       width: 108px;
+      margin-top: 2px;
     }
     .qty-val { text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; }
     button.step {
