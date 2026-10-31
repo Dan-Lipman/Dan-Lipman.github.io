@@ -8,6 +8,12 @@
     :root {
       --bg: #f6f4ef; --card: #fff; --text: #1a1a1a; --muted: #6b6b6b;
       --accent: #0b6e4f; --border: #e2ddd3; --danger: #a33; --sale: #1b7a3d;
+      --badge-bg: #e7f6ec; --header-bg: rgba(246,244,239,0.95);
+    }
+    html[data-theme="dark"] {
+      --bg: #12141a; --card: #1c1f28; --text: #e8eaed; --muted: #9aa0a6;
+      --accent: #3dd68c; --border: #2e3340; --danger: #ff8a80; --sale: #5eead4;
+      --badge-bg: #14352a; --header-bg: rgba(18,20,26,0.94);
     }
     * { box-sizing: border-box; }
     body {
@@ -16,7 +22,7 @@
     }
     header {
       position: sticky; top: 0; z-index: 10;
-      background: rgba(246,244,239,0.95); backdrop-filter: blur(8px);
+      background: var(--header-bg); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border); padding: 12px 16px;
     }
     h1 { font-size: 1.15rem; margin: 0 0 4px; }
@@ -69,7 +75,7 @@
     .status.err { color: var(--danger); }
     .badge {
       display: inline-block; font-size: 0.72rem; font-weight: 700;
-      color: var(--sale); background: #e7f6ec; border-radius: 999px;
+      color: var(--sale); background: var(--badge-bg); border-radius: 999px;
       padding: 2px 8px; margin-left: 6px; vertical-align: middle;
     }
     #setup {
@@ -92,6 +98,7 @@
     <div class="sub" id="salesMeta"></div>
     <div class="bar">
       <div class="total" id="total">$0.00</div>
+      <button type="button" id="theme" aria-label="Toggle dark mode" title="Toggle dark mode">Dark</button>
       <button type="button" id="settings">Settings</button>
       <button type="button" id="clear">Clear</button>
       <button type="button" class="primary" id="ready">Ready for cart</button>
@@ -486,6 +493,21 @@
         const c = section.querySelector(".count");
         if (c) c.textContent = n + "/" + ids.length;
       }
+    };
+
+    
+    const THEME_KEY = "grocery_theme";
+    function applyTheme(theme) {
+      const t = theme === "dark" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+      localStorage.setItem(THEME_KEY, t);
+      const btn = document.getElementById("theme");
+      if (btn) btn.textContent = t === "dark" ? "Light" : "Dark";
+    }
+    applyTheme(localStorage.getItem(THEME_KEY) || "light");
+    document.getElementById("theme").onclick = () => {
+      const cur = document.documentElement.getAttribute("data-theme") || "light";
+      applyTheme(cur === "dark" ? "light" : "dark");
     };
 
     document.getElementById("settings").onclick = () => {
