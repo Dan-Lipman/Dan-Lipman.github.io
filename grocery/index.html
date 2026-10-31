@@ -7,7 +7,7 @@
   <style>
     :root {
       --bg: #f6f4ef; --card: #fff; --text: #1a1a1a; --muted: #6b6b6b;
-      --accent: #0b6e4f; --border: #e2ddd3; --danger: #a33;
+      --accent: #0b6e4f; --border: #e2ddd3; --danger: #a33; --sale: #1b7a3d;
     }
     * { box-sizing: border-box; }
     body {
@@ -28,6 +28,11 @@
       padding: 8px 12px; cursor: pointer; font: inherit;
     }
     button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    button.step {
+      width: 36px; height: 36px; padding: 0; font-size: 1.2rem; line-height: 1;
+      border-radius: 8px;
+    }
+    button.step:disabled { opacity: 0.35; cursor: default; }
     main { max-width: 720px; margin: 0 auto; padding: 16px; }
     section {
       background: var(--card); border: 1px solid var(--border);
@@ -38,18 +43,36 @@
       justify-content: space-between; gap: 8px;
     }
     .count { color: var(--muted); font-weight: 500; font-size: 0.85rem; }
-    label.item {
-      display: grid; grid-template-columns: auto 1fr auto; gap: 10px;
-      align-items: start; padding: 8px 4px; border-top: 1px solid var(--border); cursor: pointer;
+    .item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 4px;
+      border-top: 1px solid var(--border);
     }
-    label.item:first-of-type { border-top: none; }
-    label.item input { margin-top: 3px; width: 18px; height: 18px; }
+    .item:first-of-type { border-top: none; }
+    .item input[type=checkbox] { margin-top: 4px; width: 18px; height: 18px; }
     .name { font-weight: 550; }
     .meta { color: var(--muted); font-size: 0.82rem; }
-    .price { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .prices { text-align: right; font-variant-numeric: tabular-nums; min-width: 72px; }
+    .reg { color: var(--muted); }
+    .reg.on-sale { text-decoration: line-through; font-size: 0.85rem; }
+    .sale { color: var(--sale); font-weight: 700; }
+    .qty-row {
+      display: none; grid-column: 2 / -1;
+      align-items: center; gap: 8px; margin-top: 6px;
+    }
+    .item.checked .qty-row { display: flex; }
+    .qty-val { min-width: 1.5rem; text-align: center; font-weight: 600; }
     .status { font-size: 0.85rem; color: var(--muted); margin-top: 6px; white-space: pre-wrap; }
     .status.ready { color: var(--accent); font-weight: 600; }
     .status.err { color: var(--danger); }
+    .badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      color: var(--sale); background: #e7f6ec; border-radius: 999px;
+      padding: 2px 8px; margin-left: 6px; vertical-align: middle;
+    }
     #setup {
       display: none; max-width: 720px; margin: 16px auto; padding: 16px;
       background: var(--card); border: 1px solid var(--border); border-radius: 12px;
@@ -67,6 +90,7 @@
   <header>
     <h1>Stop & Shop order</h1>
     <div class="sub" id="store">Loading…</div>
+    <div class="sub" id="salesMeta"></div>
     <div class="bar">
       <div class="total" id="total">$0.00</div>
       <button type="button" id="settings">Settings</button>
@@ -77,8 +101,8 @@
   </header>
   <div id="setup">
     <strong>One-time setup</strong>
-    <p class="sub">Paste a <em>fine-grained</em> GitHub personal access token for private repo <code>Dan-Lipman/grocery-order</code> only. Required permissions: <strong>Contents: Read and write</strong> and <strong>Metadata: Read-only</strong>. Store it in this browser only.</p>
-    <p class="warn">Do not use a classic token with broad access. Anyone with this token can change that one repo.</p>
+    <p class="sub">Paste a fine-grained GitHub PAT for <code>Dan-Lipman/grocery-order</code> only (Contents: Read and write, Metadata: Read-only). Stored in this browser only.</p>
+    <p class="warn">Do not use a broad classic token.</p>
     <textarea id="tokenInput" placeholder="github_pat_…"></textarea>
     <div class="bar" style="margin-top:8px">
       <button type="button" class="primary" id="saveToken">Save &amp; test token</button>
@@ -91,45 +115,52 @@
     const REPO = CFG.repo || "Dan-Lipman/grocery-order";
     const FILE = CFG.selectionsFile || "selections.json";
     const LIST_URL = CFG.listUrl || "list.json";
+    const SALES_URL = CFG.salesUrl || "sales.json";
     const TOKEN_KEY = "grocery_gh_pat";
-    const money = (n) => "$" + n.toFixed(2);
+    const money = (n) => "$" + (Number(n) || 0).toFixed(2);
 
     let catalog = null;
+    let sales = { matched: {}, suggestions: [] };
     let selected = new Set();
+    let quantities = {};
     let ready = false;
-    let priceById = {};
     let fileSha = null;
+    let saveChain = Promise.resolve();
 
     function token() { return (localStorage.getItem(TOKEN_KEY) || "").trim(); }
-
     function setStatus(text, cls) {
       const st = document.getElementById("status");
       st.textContent = text;
       st.className = "status" + (cls ? " " + cls : "");
     }
-
-    function explainAuthError(status, body) {
-      if (status === 401 || status === 403) {
-        return (
-          "GitHub rejected the token (" + status + "). Use a fine-grained PAT for repo " +
-          REPO + " with Contents: Read and write and Metadata: Read-only. " +
-          "Classic tokens or a PAT for a different repo will fail. Details: " + body
-        );
-      }
-      if (status === 404) {
-        return "Repo or file not found with this token (often means the token cannot see " + REPO + "). " + body;
-      }
-      if (status === 422) {
-        return "GitHub could not update the file (often a stale sha). Try again. " + body;
-      }
-      return status + " " + body;
-    }
-
-    let saveChain = Promise.resolve();
-
     function enqueueSave(fn) {
       saveChain = saveChain.then(fn, fn);
       return saveChain;
+    }
+    function unitPrice(id, item) {
+      const m = sales.matched[id];
+      if (m && m.sale_price != null) return Number(m.sale_price);
+      return Number(item.price) || 0;
+    }
+    function defaultQty(item) {
+      const q = String(item.qty || "1");
+      const m = q.match(/(\d+(?:\.\d+)?)/);
+      if (!m) return 1;
+      const n = Math.round(Number(m[1]));
+      return n > 0 ? n : 1;
+    }
+    function qtyOf(id, item) {
+      if (quantities[id] != null) return quantities[id];
+      return defaultQty(item);
+    }
+
+    function explainAuthError(status, body) {
+      if (status === 401 || status === 403) {
+        return "GitHub rejected the token (" + status + "). Need Contents R/W + Metadata read on " + REPO + ". " + body;
+      }
+      if (status === 404) return "Repo/file not visible with this token. " + body;
+      if (status === 422) return "Could not update file (stale sha?). " + body;
+      return status + " " + body;
     }
 
     async function gh(path, opts = {}) {
@@ -152,7 +183,6 @@
         try {
           const j = JSON.parse(textBody);
           body = j.message || body;
-          if (j.errors && j.errors.length) body += " — " + JSON.stringify(j.errors);
         } catch (_) {}
         const err = new Error(explainAuthError(res.status, body));
         err.status = res.status;
@@ -175,9 +205,7 @@
     }
 
     async function refreshSha() {
-      const data = await gh(
-        "/repos/" + REPO + "/contents/" + FILE + "?ref=main&ts=" + Date.now()
-      );
+      const data = await gh("/repos/" + REPO + "/contents/" + FILE + "?ref=main&ts=" + Date.now());
       fileSha = data.sha;
       return data;
     }
@@ -186,18 +214,23 @@
       const data = await refreshSha();
       const sel = JSON.parse(b64decode(data.content.replace(/\n/g, "")));
       selected = new Set(sel.selected || []);
+      quantities = sel.quantities || {};
       ready = !!sel.ready;
     }
 
     async function saveSelectionsOnce() {
-      try {
-        await refreshSha();
-      } catch (e) {
+      try { await refreshSha(); }
+      catch (e) {
         if (e.status !== 404 && !String(e.message).includes("404")) throw e;
         fileSha = null;
       }
+      const q = {};
+      for (const id of selected) {
+        if (quantities[id] != null) q[id] = quantities[id];
+      }
       const sel = {
         selected: [...selected].sort(),
+        quantities: q,
         ready,
         updated_at: new Date().toISOString(),
       };
@@ -218,9 +251,8 @@
     async function saveSelections() {
       let lastErr;
       for (let attempt = 0; attempt < 4; attempt++) {
-        try {
-          return await saveSelectionsOnce();
-        } catch (e) {
+        try { return await saveSelectionsOnce(); }
+        catch (e) {
           lastErr = e;
           const msg = String(e.message || "");
           if (e.status === 409 || msg.includes("409") || /does not match/i.test(msg)) {
@@ -235,78 +267,227 @@
     }
 
     function recompute() {
-
       let sum = 0;
-      for (const id of selected) sum += priceById[id] || 0;
-      document.getElementById("total").textContent = money(sum) + " · " + selected.size + " items";
+      const byId = {};
+      for (const section of catalog.sections) {
+        for (const item of section.items) byId[item.id] = item;
+      }
+      for (const id of selected) {
+        const item = byId[id];
+        if (!item) continue;
+        sum += unitPrice(id, item) * qtyOf(id, item);
+      }
+      document.getElementById("total").textContent =
+        money(sum) + " · " + selected.size + " items";
       if (ready) {
         setStatus("Marked ready — tell Grocery in chat to build the cart.", "ready");
         document.getElementById("ready").textContent = "Unmark ready";
-      } else {
-        setStatus("Checks save to your private GitHub repo as you tap.");
+      } else if (token()) {
+        setStatus("Checks and quantities save to your private GitHub repo as you tap.");
         document.getElementById("ready").textContent = "Ready for cart";
       }
       for (const section of document.querySelectorAll("section[data-section]")) {
-        const ids = [...section.querySelectorAll("input[type=checkbox]")].map(i => i.dataset.id);
-        const n = ids.filter(id => selected.has(id)).length;
-        section.querySelector(".count").textContent = n + "/" + ids.length;
+        const ids = [...section.querySelectorAll("input[type=checkbox]")].map((i) => i.dataset.id);
+        const n = ids.filter((id) => selected.has(id)).length;
+        const c = section.querySelector(".count");
+        if (c) c.textContent = n + "/" + ids.length;
       }
     }
 
-    async function toggle(id, checked) {
-      if (checked) selected.add(id); else selected.delete(id);
-      recompute();
-      try {
-        await enqueueSave(() => saveSelections());
-        recompute();
-      } catch (e) {
+    function persist() {
+      return enqueueSave(() => saveSelections()).then(() => recompute()).catch((e) => {
         setStatus("Save failed: " + e.message, "err");
         document.getElementById("setup").classList.add("show");
+      });
+    }
+
+    function renderPrices(id, item) {
+      const m = sales.matched[id];
+      const reg = Number(item.price) || 0;
+      if (m && m.sale_price != null) {
+        return (
+          '<div class="prices">' +
+          '<div class="reg on-sale">' + money(reg) + "</div>" +
+          '<div class="sale">' + money(m.sale_price) +
+          (m.sale_display ? ' <span class="meta">(' + m.sale_display + ")</span>" : "") +
+          "</div></div>"
+        );
       }
+      return '<div class="prices"><div class="reg">' + money(reg) + "</div></div>";
+    }
+
+    function bindItemRow(row, item) {
+      const id = item.id;
+      const cb = row.querySelector('input[type=checkbox]');
+      const down = row.querySelector("[data-down]");
+      const up = row.querySelector("[data-up]");
+      const val = row.querySelector("[data-qty]");
+
+      function sync() {
+        const on = selected.has(id);
+        cb.checked = on;
+        row.classList.toggle("checked", on);
+        if (on && quantities[id] == null) quantities[id] = defaultQty(item);
+        val.textContent = String(qtyOf(id, item));
+        down.disabled = !on || qtyOf(id, item) <= 1;
+        recompute();
+      }
+
+      cb.addEventListener("change", () => {
+        if (cb.checked) {
+          selected.add(id);
+          if (quantities[id] == null) quantities[id] = defaultQty(item);
+        } else {
+          selected.delete(id);
+        }
+        sync();
+        persist();
+      });
+      down.addEventListener("click", () => {
+        if (!selected.has(id)) return;
+        quantities[id] = Math.max(1, qtyOf(id, item) - 1);
+        sync();
+        persist();
+      });
+      up.addEventListener("click", () => {
+        if (!selected.has(id)) {
+          selected.add(id);
+          quantities[id] = defaultQty(item);
+        } else {
+          quantities[id] = qtyOf(id, item) + 1;
+        }
+        sync();
+        persist();
+      });
+      sync();
+    }
+
+    function itemRowHtml(item) {
+      const onSale = !!sales.matched[item.id];
+      const bits = [];
+      if (item.qty) bits.push(item.qty);
+      if (item.who) bits.push(item.who);
+      if (item.note) bits.push(item.note);
+      if (onSale && sales.matched[item.id].circular_name) {
+        bits.push("circular: " + sales.matched[item.id].circular_name);
+      }
+      return (
+        '<div class="item" data-id="' + item.id + '">' +
+        '<input type="checkbox" data-id="' + item.id + '" />' +
+        "<div><div class=\"name\">" + item.name +
+        (onSale ? '<span class="badge">SALE</span>' : "") +
+        "</div><div class=\"meta\">" + bits.join(" · ") + "</div>" +
+        '<div class="qty-row">' +
+        '<button type="button" class="step" data-down aria-label="Decrease">▾</button>' +
+        '<span class="qty-val" data-qty>1</span>' +
+        '<button type="button" class="step" data-up aria-label="Increase">▴</button>' +
+        '<span class="meta">qty</span></div></div>' +
+        renderPrices(item.id, item) +
+        "</div>"
+      );
     }
 
     function render() {
       document.getElementById("store").textContent = (catalog && catalog.store) || REPO;
+      const sm = document.getElementById("salesMeta");
+      if (sales.valid) {
+        sm.textContent =
+          "Circular " + sales.valid +
+          " · " + Object.keys(sales.matched || {}).length + " list items on sale" +
+          (sales.source ? " · " + sales.source.split(";")[0] : "");
+      }
       const main = document.getElementById("main");
       main.innerHTML = "";
-      priceById = {};
+
       for (const section of catalog.sections) {
         const el = document.createElement("section");
         el.dataset.section = section.id;
-        const h2 = document.createElement("h2");
-        h2.innerHTML = "<span>" + section.title + "</span><span class=\"count\"></span>";
-        el.appendChild(h2);
-        for (const item of section.items) {
-          priceById[item.id] = Number(item.price) || 0;
-          const label = document.createElement("label");
-          label.className = "item";
-          const cb = document.createElement("input");
-          cb.type = "checkbox";
-          cb.dataset.id = item.id;
-          cb.checked = selected.has(item.id);
-          cb.addEventListener("change", () => toggle(item.id, cb.checked));
-          const mid = document.createElement("div");
-          const name = document.createElement("div");
-          name.className = "name";
-          name.textContent = item.name;
-          const meta = document.createElement("div");
-          meta.className = "meta";
-          const bits = [];
-          if (item.qty) bits.push(item.qty);
-          if (item.who) bits.push(item.who);
-          if (item.note) bits.push(item.note);
-          meta.textContent = bits.join(" · ");
-          mid.appendChild(name); mid.appendChild(meta);
-          const price = document.createElement("div");
-          price.className = "price";
-          price.textContent = money(Number(item.price) || 0);
-          label.appendChild(cb); label.appendChild(mid); label.appendChild(price);
-          el.appendChild(label);
-        }
+        el.innerHTML =
+          "<h2><span>" + section.title + '</span><span class="count"></span></h2>' +
+          section.items.map(itemRowHtml).join("");
+        main.appendChild(el);
+        el.querySelectorAll(".item").forEach((row) => {
+          const item = section.items.find((i) => i.id === row.dataset.id);
+          if (item) bindItemRow(row, item);
+        });
+      }
+
+      if ((sales.suggestions || []).length) {
+        const el = document.createElement("section");
+        el.dataset.section = "suggestions";
+        el.innerHTML =
+          "<h2><span>Also on sale (not on your usual list)</span></h2>" +
+          '<p class="meta">From this week’s circular — tap ▴ to add with quantity.</p>';
+        sales.suggestions.forEach((sug, idx) => {
+          const id = "sug-" + (sug.flyer_item_id || idx);
+          const fake = {
+            id,
+            name: sug.name,
+            price: sug.sale.unit_price,
+            qty: "1",
+          };
+          // inject into matched so renderPrices shows green only
+          if (!sales.matched[id]) {
+            sales.matched[id] = {
+              sale_price: sug.sale.unit_price,
+              sale_display: sug.sale.display,
+              regular_price: sug.sale.unit_price,
+              circular_name: sug.name,
+            };
+          }
+          // find or create a synthetic section bucket by appending rows
+          const wrap = document.createElement("div");
+          wrap.innerHTML = itemRowHtml(fake);
+          const row = wrap.firstElementChild;
+          // for suggestions, show sale price without fake strikethrough of same number
+          const prices = row.querySelector(".prices");
+          if (prices) {
+            prices.innerHTML =
+              '<div class="sale">' + money(sug.sale.unit_price) +
+              (sug.sale.display ? ' <span class="meta">(' + sug.sale.display + ")</span>" : "") +
+              "</div>";
+          }
+          el.appendChild(row);
+          // allow selecting suggestions into selected set (saved by id)
+          if (!catalog._suggestions) catalog._suggestions = [];
+          catalog._suggestions.push(fake);
+          bindItemRow(row, fake);
+        });
         main.appendChild(el);
       }
       recompute();
     }
+
+    // include suggestion items in total lookup
+    const _recompute = recompute;
+    recompute = function () {
+      let sum = 0;
+      const byId = {};
+      for (const section of catalog.sections) {
+        for (const item of section.items) byId[item.id] = item;
+      }
+      for (const item of catalog._suggestions || []) byId[item.id] = item;
+      for (const id of selected) {
+        const item = byId[id];
+        if (!item) continue;
+        sum += unitPrice(id, item) * qtyOf(id, item);
+      }
+      document.getElementById("total").textContent =
+        money(sum) + " · " + selected.size + " items";
+      if (ready) {
+        setStatus("Marked ready — tell Grocery in chat to build the cart.", "ready");
+        document.getElementById("ready").textContent = "Unmark ready";
+      } else if (token()) {
+        setStatus("Checks and quantities save to your private GitHub repo as you tap.");
+        document.getElementById("ready").textContent = "Ready for cart";
+      }
+      for (const section of document.querySelectorAll("section[data-section]")) {
+        const ids = [...section.querySelectorAll("input[type=checkbox]")].map((i) => i.dataset.id);
+        const n = ids.filter((id) => selected.has(id)).length;
+        const c = section.querySelector(".count");
+        if (c) c.textContent = n + "/" + ids.length;
+      }
+    };
 
     document.getElementById("settings").onclick = () => {
       document.getElementById("setup").classList.toggle("show");
@@ -329,18 +510,16 @@
     };
     document.getElementById("clearToken").onclick = () => {
       localStorage.removeItem(TOKEN_KEY);
-      document.getElementById("tokenInput").value = "";
       setStatus("Token removed from this browser.", "err");
     };
-
     document.getElementById("clear").onclick = async () => {
       selected = new Set();
+      quantities = {};
       ready = false;
-      recompute();
-      try { await enqueueSave(() => saveSelections()); render(); }
+      render();
+      try { await enqueueSave(() => saveSelections()); }
       catch (e) { setStatus("Clear failed: " + e.message, "err"); }
     };
-
     document.getElementById("ready").onclick = async () => {
       ready = !ready;
       recompute();
@@ -349,10 +528,15 @@
     };
 
     (async () => {
-      catalog = await fetch(LIST_URL).then(r => r.json());
+      const [list, salesData] = await Promise.all([
+        fetch(LIST_URL + "?ts=" + Date.now()).then((r) => r.json()),
+        fetch(SALES_URL + "?ts=" + Date.now()).then((r) => (r.ok ? r.json() : { matched: {}, suggestions: [] })),
+      ]);
+      catalog = list;
+      catalog._suggestions = [];
+      sales = salesData || { matched: {}, suggestions: [] };
       if (!token()) {
         document.getElementById("setup").classList.add("show");
-        document.getElementById("store").textContent = catalog.store || "";
         render();
         setStatus("Add a fine-grained GitHub token in Settings to save picks.", "err");
         return;

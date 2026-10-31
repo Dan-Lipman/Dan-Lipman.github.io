@@ -1,0 +1,367 @@
+{
+  "valid": "Oct 30, 2026 to Nov 05, 2026",
+  "store": "Stop & Shop - Glastonbury (store_id 0631, postal 06033)",
+  "flyer_run_id": 1203621,
+  "source": "Scraped Stop & Shop Flipp circular DOM for Glastonbury (store 0631); some flyer pages may be missing",
+  "matched": {
+    "core-blueberries": {
+      "circular_name": "Driscoll's Sweetest Batch or Legend Blueberries",
+      "sale_price": 6.99,
+      "sale_display": "$6.99 /ea",
+      "sale_unit": "EA",
+      "qty_for": 1,
+      "regular_price": 7.98,
+      "score": 0.75
+    },
+    "core-raspberries": {
+      "circular_name": "Driscoll's Raspberries",
+      "sale_price": 2.5,
+      "sale_display": "2/ $5.0",
+      "sale_unit": "EA",
+      "qty_for": 2,
+      "regular_price": 4.39,
+      "score": 0.75
+    },
+    "core-avocados": {
+      "circular_name": "Hass Avocados",
+      "sale_price": 0.88,
+      "sale_display": "$0.88 /EA",
+      "sale_unit": "EA",
+      "qty_for": 1,
+      "regular_price": 3.75,
+      "score": 1.0
+    },
+    "core-cucumbers": {
+      "circular_name": "Stop & Shop Mini Cucumbers",
+      "sale_price": 2.5,
+      "sale_display": "2/ $5.0",
+      "sale_unit": "EA",
+      "qty_for": 2,
+      "regular_price": 2.98,
+      "score": 0.75
+    },
+    "a-apples": {
+      "circular_name": "Tote Bag Apples",
+      "sale_price": 0.99,
+      "sale_display": "$0.99 /lb",
+      "sale_unit": "LB",
+      "qty_for": 1,
+      "regular_price": 3.17,
+      "score": 0.75
+    },
+    "a-broccoli": {
+      "circular_name": "Stop & Shop Broccoli Florets or Vegetable Medley",
+      "sale_price": 2.5,
+      "sale_display": "2/ $5.0",
+      "sale_unit": "EA",
+      "qty_for": 2,
+      "regular_price": 2.49,
+      "score": 0.75
+    },
+    "a-guac": {
+      "circular_name": "Nature's Promise Organic Guacamole",
+      "sale_price": 2.99,
+      "sale_display": "$2.99 /ea",
+      "sale_unit": "EA",
+      "qty_for": 1,
+      "regular_price": 5.99,
+      "score": 0.75
+    },
+    "a-eggs": {
+      "circular_name": "Nature's Promise Large Pasture Raised Eggs",
+      "sale_price": 5.99,
+      "sale_display": "$5.99",
+      "sale_unit": "EA",
+      "qty_for": 1,
+      "regular_price": 6.44,
+      "score": 0.75
+    },
+    "a-beans": {
+      "circular_name": "Nature's Promise Organic Beans",
+      "sale_price": 1.25,
+      "sale_display": "4/ $5.0",
+      "sale_unit": "EA",
+      "qty_for": 4,
+      "regular_price": 2.98,
+      "score": 0.75
+    },
+    "b-grapes": {
+      "circular_name": "Autumn Crisp Green Seedless Grapes",
+      "sale_price": 2.88,
+      "sale_display": "$2.88",
+      "sale_unit": "EA",
+      "qty_for": 1,
+      "regular_price": 4.75,
+      "score": 0.75
+    },
+    "b-tuna": {
+      "circular_name": "Bumble Bee Chunk Light Tuna",
+      "sale_price": 0.99,
+      "sale_display": "$0.99",
+      "sale_unit": "EA",
+      "qty_for": 1,
+      "regular_price": 2.5,
+      "score": 0.75
+    },
+    "add-wild-tomatoes": {
+      "circular_name": "Taste of Inspirations Wild Wonder Tomatoes",
+      "sale_price": 5.0,
+      "sale_display": "$5.0 /ea",
+      "sale_unit": "EA",
+      "qty_for": 1,
+      "regular_price": 5.0,
+      "score": 0.75
+    },
+    "add-lactaid": {
+      "circular_name": "Stop & Shop Lactose Free Milk",
+      "sale_price": 3.79,
+      "sale_display": "$3.79",
+      "sale_unit": "EA",
+      "qty_for": 1,
+      "regular_price": 4.99,
+      "score": 0.688
+    }
+  },
+  "suggestions": [
+    {
+      "name": "Stop & Shop Pasta",
+      "sale": {
+        "price": 0.88,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$0.88",
+        "unit_price": 0.88
+      },
+      "flyer_item_id": 1048875592,
+      "raw": "Stop & Shop Pasta. $0.88"
+    },
+    {
+      "name": "Stop & Shop Vegetables or Tomatoes",
+      "sale": {
+        "price": 0.88,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$0.88",
+        "unit_price": 0.88
+      },
+      "flyer_item_id": 1048874723,
+      "raw": "Stop & Shop Vegetables or Tomatoes. $0.88"
+    },
+    {
+      "name": "Stop & Shop Chicken Drumsticks or Thighs",
+      "sale": {
+        "price": 0.99,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$0.99 /LB",
+        "unit_price": 0.99
+      },
+      "flyer_item_id": 1048874949,
+      "raw": "Stop & Shop Chicken Drumsticks or Thighs. $0.99 /LB"
+    },
+    {
+      "name": "Hunt's Pasta Sauce",
+      "sale": {
+        "price": 5.0,
+        "qty_for": 4,
+        "unit": "EA",
+        "display": "4/ $5.0",
+        "unit_price": 1.25
+      },
+      "flyer_item_id": 1048876317,
+      "raw": "Hunt's Pasta Sauce. 4/ $5.0"
+    },
+    {
+      "name": "Fage Total Yogurt",
+      "sale": {
+        "price": 5.0,
+        "qty_for": 4,
+        "unit": "EA",
+        "display": "4/ $5.0",
+        "unit_price": 1.25
+      },
+      "flyer_item_id": 1048870844,
+      "raw": "Fage Total Yogurt. 4/ $5.0"
+    },
+    {
+      "name": "No Yolks or Penn Dutch Egg Noodles. FINAL PRICE",
+      "sale": {
+        "price": 1.49,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.49",
+        "unit_price": 1.49
+      },
+      "flyer_item_id": 1048871139,
+      "raw": "No Yolks or Penn Dutch Egg Noodles. FINAL PRICE $1.49 DIGITAL COUPON"
+    },
+    {
+      "name": "Ro-Tel Diced Tomatoes",
+      "sale": {
+        "price": 1.79,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.79",
+        "unit_price": 1.79
+      },
+      "flyer_item_id": 1048876383,
+      "raw": "Ro-Tel Diced Tomatoes. $1.79"
+    },
+    {
+      "name": "Bertolli Pasta or Alfredo Sauce",
+      "sale": {
+        "price": 1.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.99",
+        "unit_price": 1.99
+      },
+      "flyer_item_id": 1048875306,
+      "raw": "Bertolli Pasta or Alfredo Sauce. $1.99"
+    },
+    {
+      "name": "Lay's or Lay's Kettle Chips. FINAL PRICE",
+      "sale": {
+        "price": 1.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.99 /EA",
+        "unit_price": 1.99
+      },
+      "flyer_item_id": 1048871533,
+      "raw": "Lay's or Lay's Kettle Chips. FINAL PRICE $1.99 /EA. DIGITAL COUPON WHEN YOU BUY 2"
+    },
+    {
+      "name": "Stop & Shop Pasta Sauce",
+      "sale": {
+        "price": 1.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$1.99",
+        "unit_price": 1.99
+      },
+      "flyer_item_id": 1048876462,
+      "raw": "Stop & Shop Pasta Sauce. $1.99"
+    },
+    {
+      "name": "Perdue Breaded Chicken Nuggets, Strips or Cutlets",
+      "sale": {
+        "price": 5.0,
+        "qty_for": 2,
+        "unit": "EA",
+        "display": "2/ $5.0",
+        "unit_price": 2.5
+      },
+      "flyer_item_id": 1048875619,
+      "raw": "Perdue Breaded Chicken Nuggets, Strips or Cutlets. 2/ $5.0"
+    },
+    {
+      "name": "Ocean Spray Cranberry Sauce or Craisins",
+      "sale": {
+        "price": 5.0,
+        "qty_for": 2,
+        "unit": "EA",
+        "display": "2/ $5.0",
+        "unit_price": 2.5
+      },
+      "flyer_item_id": 1048876253,
+      "raw": "Ocean Spray Cranberry Sauce or Craisins. 2/ $5.0"
+    },
+    {
+      "name": "Pop-Tarts or Rice Krispies Treats",
+      "sale": {
+        "price": 5.0,
+        "qty_for": 2,
+        "unit": "EA",
+        "display": "2/ $5.0",
+        "unit_price": 2.5
+      },
+      "flyer_item_id": 1048876277,
+      "raw": "Pop-Tarts or Rice Krispies Treats. 2/ $5.0"
+    },
+    {
+      "name": "Organic Honeycrisp Apples",
+      "sale": {
+        "price": 2.88,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$2.88 /lb",
+        "unit_price": 2.88
+      },
+      "flyer_item_id": 1048870242,
+      "raw": "Organic Honeycrisp Apples. $2.88 /lb"
+    },
+    {
+      "name": "Nature's Promise Organic Hummus",
+      "sale": {
+        "price": 2.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$2.99 /ea",
+        "unit_price": 2.99
+      },
+      "flyer_item_id": 1048871400,
+      "raw": "Nature's Promise Organic Hummus. $2.99 /ea"
+    },
+    {
+      "name": "Hoffman's Cheddar Cheese. FINAL PRICE",
+      "sale": {
+        "price": 2.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$2.99 /EA",
+        "unit_price": 2.99
+      },
+      "flyer_item_id": 1048871371,
+      "raw": "Hoffman's Cheddar Cheese. FINAL PRICE $2.99 /EA. DIGITAL COUPON"
+    },
+    {
+      "name": "Rana Pasta or Sauce. FINAL PRICE",
+      "sale": {
+        "price": 2.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$2.99 /EA",
+        "unit_price": 2.99
+      },
+      "flyer_item_id": 1048872177,
+      "raw": "Rana Pasta or Sauce. FINAL PRICE $2.99 /EA. DIGITAL COUPON"
+    },
+    {
+      "name": "Pepperidge Farm Farmhouse Bread, Buns or Dinner Rolls",
+      "sale": {
+        "price": 2.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$2.99",
+        "unit_price": 2.99
+      },
+      "flyer_item_id": 1048871435,
+      "raw": "Pepperidge Farm Farmhouse Bread, Buns or Dinner Rolls. $2.99"
+    },
+    {
+      "name": "Perdue Chicken Wingettes",
+      "sale": {
+        "price": 2.99,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$2.99 /lb",
+        "unit_price": 2.99
+      },
+      "flyer_item_id": 1048870029,
+      "raw": "Perdue Chicken Wingettes. $2.99 /lb"
+    },
+    {
+      "name": "Stop & Shop Yellow or Mini Potatoes or Sweet Onions",
+      "sale": {
+        "price": 6.0,
+        "qty_for": 2,
+        "unit": "EA",
+        "display": "2/ $6.0",
+        "unit_price": 3.0
+      },
+      "flyer_item_id": 1048875291,
+      "raw": "Stop & Shop Yellow or Mini Potatoes or Sweet Onions. 2/ $6.0"
+    }
+  ]
+}
