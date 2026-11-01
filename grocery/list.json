@@ -110,34 +110,6 @@
           "who": null
         },
         {
-          "id": "a-sweet-potato",
-          "name": "Sweet potatoes",
-          "qty": "~2.2 lb",
-          "price": 1.55,
-          "who": null
-        },
-        {
-          "id": "a-guac",
-          "name": "Homestyle guacamole",
-          "qty": "1",
-          "price": 5.99,
-          "who": null
-        },
-        {
-          "id": "a-beef",
-          "name": "Nature's Promise 90% grass-fed ground beef",
-          "qty": "2",
-          "price": 14.98,
-          "who": null
-        },
-        {
-          "id": "a-eggs",
-          "name": "Stop & Shop large eggs",
-          "qty": "1",
-          "price": 6.44,
-          "who": null
-        },
-        {
           "id": "a-bread",
           "name": "Bakery 5-seed Tuscan bread, 20 oz",
           "qty": "1",
@@ -156,36 +128,6 @@
           "name": "Canned corn, no salt added (else low-sodium)",
           "qty": "1\u20132",
           "price": 1.88,
-          "who": null
-        },
-        {
-          "id": "a-jovial",
-          "name": "Jovial brown rice pasta",
-          "qty": "1",
-          "price": 3.99,
-          "who": "Jessica",
-          "note": "check label"
-        },
-        {
-          "id": "a-carbone",
-          "name": "Carbone sauce, 24 oz",
-          "qty": "1",
-          "price": 5.99,
-          "who": null
-        },
-        {
-          "id": "a-siete",
-          "name": "Siete tortilla chips, lime",
-          "qty": "1",
-          "price": 4.49,
-          "who": "Jessica",
-          "note": "check label"
-        },
-        {
-          "id": "a-cheerios",
-          "name": "Cheerios",
-          "qty": "2",
-          "price": 6.98,
           "who": null
         },
         {
@@ -361,7 +303,7 @@
         {
           "id": "add-red-pears",
           "name": "Red pears",
-          "qty": "~1.09 lb",
+          "qty": "1",
           "price": 1.9,
           "who": null
         },
@@ -375,14 +317,14 @@
         {
           "id": "add-green-grapes",
           "name": "Green grapes",
-          "qty": "~1.81 lb",
+          "qty": "1",
           "price": 4.22,
           "who": null
         },
         {
           "id": "add-mangoes",
           "name": "Honey mangoes",
-          "qty": "2\u20133",
+          "qty": "1",
           "price": 5.7,
           "who": null
         },
@@ -396,21 +338,21 @@
         {
           "id": "add-mini-cuke",
           "name": "Mini cucumbers, 14 oz",
-          "qty": "1\u20132",
+          "qty": "1",
           "price": 5.0,
           "who": null
         },
         {
           "id": "add-lemons",
           "name": "Lemons",
-          "qty": "1\u20132",
+          "qty": "1",
           "price": 1.24,
           "who": null
         },
         {
           "id": "add-oranges",
           "name": "Cara Cara oranges",
-          "qty": "2",
+          "qty": "1",
           "price": 2.12,
           "who": null
         },
@@ -482,7 +424,7 @@
         {
           "id": "add-peanuts",
           "name": "Planters peanuts, 16 oz",
-          "qty": "1\u20132",
+          "qty": "1",
           "price": 6.0,
           "who": null
         },
@@ -503,7 +445,7 @@
         {
           "id": "add-triscuit",
           "name": "Triscuit Hint of Salt",
-          "qty": "1\u20132",
+          "qty": "1",
           "price": 6.78,
           "who": null
         },
@@ -571,7 +513,7 @@
           "qty": "1",
           "price": 5.99,
           "who": null,
-          "note": "Ad hoc \u2014 not on a regular trip schedule"
+          "note": "Ad hoc"
         },
         {
           "id": "add-carbone-vodka",
@@ -579,10 +521,66 @@
           "qty": "1",
           "price": 6.39,
           "who": null,
-          "note": "Ad hoc \u2014 not on a regular trip schedule"
+          "note": "Ad hoc"
+        },
+        {
+          "id": "a-sweet-potato",
+          "name": "Sweet potatoes",
+          "qty": "1",
+          "price": 1.55,
+          "who": null,
+          "note": "Ad hoc"
+        },
+        {
+          "id": "a-guac",
+          "name": "Homestyle guacamole",
+          "qty": "1",
+          "price": 5.99,
+          "who": null,
+          "note": "Ad hoc"
+        },
+        {
+          "id": "a-beef",
+          "name": "Nature's Promise 90% grass-fed ground beef",
+          "qty": "1",
+          "price": 14.98,
+          "who": null,
+          "note": "Ad hoc"
+        },
+        {
+          "id": "a-eggs",
+          "name": "Organic eggs",
+          "qty": "1",
+          "price": 6.44,
+          "who": null,
+          "note": "Ad hoc"
+        },
+        {
+          "id": "a-jovial",
+          "name": "Jovial brown rice pasta",
+          "qty": "1",
+          "price": 3.99,
+          "who": "Jessica",
+          "note": "Ad hoc \u2014 check label"
+        },
+        {
+          "id": "a-siete",
+          "name": "Siete tortilla chips, lime",
+          "qty": "1",
+          "price": 4.49,
+          "who": "Jessica",
+          "note": "Ad hoc \u2014 check label"
+        },
+        {
+          "id": "a-cheerios",
+          "name": "Cheerios",
+          "qty": "1",
+          "price": 6.98,
+          "who": null,
+          "note": "Ad hoc"
         }
       ]
     }
   ],
-  "catalog_rev": "20261101T192022Z"
+  "catalog_rev": "20261101T192104Z"
 }
