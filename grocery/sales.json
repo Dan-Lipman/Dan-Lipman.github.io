@@ -192,23 +192,6 @@
       ]
     },
     {
-      "name": "Tropicana Orange Juice",
-      "sale": {
-        "price": 6.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$6.99",
-        "unit_price": 6.99
-      },
-      "flyer_item_id": 1048877134,
-      "raw": "Tropicana Orange Juice. $6.99",
-      "score": 65.0,
-      "reasons": [
-        "produce:orange",
-        "Dan plan"
-      ]
-    },
-    {
       "name": "Stop & Shop Yellow or Mini Potatoes or Sweet Onions",
       "sale": {
         "price": 6.0,
@@ -270,6 +253,24 @@
       "score": 45.0,
       "reasons": [
         "produce:guacamole"
+      ]
+    },
+    {
+      "name": "Tropicana Orange Juice",
+      "sale": {
+        "price": 6.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$6.99",
+        "unit_price": 6.99
+      },
+      "flyer_item_id": 1048877134,
+      "raw": "Tropicana Orange Juice. $6.99",
+      "score": 45.0,
+      "reasons": [
+        "produce:orange",
+        "Dan plan",
+        "demote:juice"
       ]
     },
     {
