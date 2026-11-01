@@ -517,13 +517,6 @@
           "note": "Ad hoc"
         },
         {
-          "id": "add-pineapple",
-          "name": "Lakewood pineapple juice, 32 oz",
-          "qty": "1",
-          "price": 6.99,
-          "note": "Ad hoc"
-        },
-        {
           "id": "add-aloe",
           "name": "Solti aloe drink, 14.9 oz",
           "qty": "1",
@@ -552,11 +545,18 @@
           "price": 4.49,
           "who": "Jessica",
           "note": "Ad hoc; check label"
+        },
+        {
+          "id": "add-spinach",
+          "name": "Spinach",
+          "qty": "1",
+          "price": 2.49,
+          "note": "Ad hoc"
         }
       ]
     }
   ],
-  "catalog_rev": "20261101T193143Z",
+  "catalog_rev": "20261101T193300Z",
   "rotation": {
     "mode": "weekly_ab_swap",
     "note": "Trip A and Trip B swap which is current each ISO week"
