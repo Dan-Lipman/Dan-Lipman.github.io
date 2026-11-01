@@ -473,13 +473,6 @@
           "who": null
         },
         {
-          "id": "add-vodka-sauce",
-          "name": "Carbone vodka sauce",
-          "qty": "1",
-          "price": 6.39,
-          "who": null
-        },
-        {
           "id": "add-ss-salsa",
           "name": "Stop & Shop thick & chunky salsa",
           "qty": "1",
@@ -571,9 +564,25 @@
           "qty": "1",
           "price": 3.99,
           "who": null
+        },
+        {
+          "id": "add-carbone-marinara",
+          "name": "Carbone marinara sauce",
+          "qty": "1",
+          "price": 5.99,
+          "who": null,
+          "note": "Ad hoc \u2014 not on a regular trip schedule"
+        },
+        {
+          "id": "add-carbone-vodka",
+          "name": "Carbone vodka sauce",
+          "qty": "1",
+          "price": 6.39,
+          "who": null,
+          "note": "Ad hoc \u2014 not on a regular trip schedule"
         }
       ]
     }
   ],
-  "catalog_rev": "20261101T191529Z"
+  "catalog_rev": "20261101T192022Z"
 }
