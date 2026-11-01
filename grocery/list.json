@@ -72,15 +72,7 @@
           "qty": "1",
           "price": 6.44,
           "who": "Layla",
-          "note": "Fairlife 2% is backup if skim unavailable"
-        },
-        {
-          "id": "core-2pct",
-          "name": "Fairlife 2% milk",
-          "qty": "1",
-          "price": 6.19,
-          "who": "Layla",
-          "note": "Backup only if Fairlife skim unavailable"
+          "note": "If skim unavailable at order time, use Fairlife 2%"
         }
       ]
     },
@@ -583,5 +575,5 @@
       ]
     }
   ],
-  "catalog_rev": "20261101T191445Z"
+  "catalog_rev": "20261101T191529Z"
 }
