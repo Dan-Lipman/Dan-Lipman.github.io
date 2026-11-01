@@ -18,7 +18,7 @@
           "qty": "2",
           "price": 8.98,
           "who": null,
-          "note": "2 lb total \u2014 two 1 lb packs or one 2 lb pack, whichever is cheaper"
+          "note": "Pounds total \u2014 two 1 lb packs or one 2 lb pack, whichever is cheaper"
         },
         {
           "id": "core-blueberries",
@@ -26,7 +26,7 @@
           "qty": "2",
           "price": 7.98,
           "who": null,
-          "note": "2 pints total \u2014 two pints or one larger pack equaling 2 pints"
+          "note": "Pints total \u2014 two pints or one larger pack equaling 2 pints"
         },
         {
           "id": "core-avocados",
@@ -37,14 +37,14 @@
         },
         {
           "id": "core-red-peppers",
-          "name": "Red bell pepper",
+          "name": "Red bell peppers",
           "qty": "1",
           "price": 2.74,
           "who": null
         },
         {
           "id": "core-pears",
-          "name": "Bartlett pear",
+          "name": "Bartlett pears",
           "qty": "1",
           "price": 2.19,
           "who": null
@@ -62,7 +62,7 @@
           "qty": "0.5",
           "price": 8.83,
           "who": "Dan",
-          "note": "Half pound per trip; qty is lb. If out, lower-sodium",
+          "note": "Half pound; qty is lb. If out, lower-sodium",
           "step": 0.25,
           "min_qty": 0.25
         },
@@ -72,11 +72,11 @@
           "qty": "1",
           "price": 6.44,
           "who": "Layla",
-          "note": "Preferred; if unavailable use Fairlife 2%"
+          "note": "Fairlife 2% is backup if skim unavailable"
         },
         {
           "id": "core-2pct",
-          "name": "Fairlife 2% milk (backup)",
+          "name": "Fairlife 2% milk",
           "qty": "1",
           "price": 6.19,
           "who": "Layla",
@@ -198,11 +198,11 @@
         },
         {
           "id": "core-pasta",
-          "name": "Stop & Shop store-brand rigatoni",
+          "name": "Stop & Shop store brand rigatoni",
           "qty": "1",
           "price": 0.88,
           "who": "Layla",
-          "note": "Every other trip (Trip A)"
+          "note": "Every other trip"
         }
       ]
     },
@@ -354,11 +354,11 @@
         },
         {
           "id": "b-goodles",
-          "name": "Goodles protein pasta (Loop-de-Loos or Curveballs)",
+          "name": "Goodles protein pasta (loop-de-loos or curveballs)",
           "qty": "1",
           "price": 3.99,
           "who": "Layla",
-          "note": "On the off trips from rigatoni (Trip B)"
+          "note": "On the off trips from rigatoni"
         }
       ]
     },
