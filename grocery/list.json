@@ -10,8 +10,7 @@
           "name": "Bananas",
           "qty": "2",
           "price": 0.5,
-          "who": null,
-          "note": "2 bananas every purchase"
+          "who": null
         },
         {
           "id": "core-strawberries",
