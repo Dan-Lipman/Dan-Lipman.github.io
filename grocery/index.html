@@ -252,16 +252,33 @@
       if (m && m.sale_price != null) return Number(m.sale_price);
       return Number(item.price) || 0;
     }
+    function roundQty(n, step) {
+      const s = Number(step) || 1;
+      const r = Math.round(n / s) * s;
+      return Math.round(r * 1000) / 1000;
+    }
+    function itemStep(item) {
+      if (item && item.step != null) return Number(item.step) || 1;
+      return 1;
+    }
+    function itemMin(item) {
+      if (item && item.min_qty != null) return Number(item.min_qty) || itemStep(item);
+      return itemStep(item);
+    }
     function defaultQty(item) {
       const q = String(item.qty || "1");
       const m = q.match(/(\d+(?:\.\d+)?)/);
       if (!m) return 1;
-      const n = Math.round(Number(m[1]));
+      const n = Number(m[1]);
       return n > 0 ? n : 1;
     }
     function qtyOf(id, item) {
       if (quantities[id] != null) return quantities[id];
       return defaultQty(item);
+    }
+    function formatQty(n) {
+      if (Number.isInteger(n)) return String(n);
+      return String(Math.round(n * 1000) / 1000);
     }
 
     function explainAuthError(status, body) {
@@ -438,8 +455,8 @@
         cb.checked = on;
         row.classList.toggle("checked", on);
         if (on && quantities[id] == null) quantities[id] = defaultQty(item);
-        val.textContent = String(qtyOf(id, item));
-        down.disabled = qtyOf(id, item) <= 1;
+        val.textContent = formatQty(qtyOf(id, item));
+        down.disabled = qtyOf(id, item) <= itemMin(item) + 1e-9;
         recompute();
       }
 
@@ -455,16 +472,19 @@
       });
       down.addEventListener("click", () => {
         if (!selected.has(id)) return;
-        quantities[id] = Math.max(1, qtyOf(id, item) - 1);
+        const step = itemStep(item);
+        const min = itemMin(item);
+        quantities[id] = Math.max(min, roundQty(qtyOf(id, item) - step, step));
         sync();
         persist();
       });
       up.addEventListener("click", () => {
+        const step = itemStep(item);
         if (!selected.has(id)) {
           selected.add(id);
           quantities[id] = defaultQty(item);
         } else {
-          quantities[id] = qtyOf(id, item) + 1;
+          quantities[id] = roundQty(qtyOf(id, item) + step, step);
         }
         sync();
         persist();
