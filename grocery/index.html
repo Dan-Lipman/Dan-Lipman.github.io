@@ -515,8 +515,56 @@
       );
     }
 
+    
+    function isoWeekParity(d = new Date()) {
+      // ISO week number parity for weekly A/B swap
+      const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+      const dayNum = date.getUTCDay() || 7;
+      date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+      const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+      const weekNo = Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+      return weekNo % 2; // 0 or 1
+    }
+    function applyTripRotation(cat) {
+      if (!cat || !Array.isArray(cat.sections)) return cat;
+      const secs = cat.sections.slice();
+      const aIdx = secs.findIndex((s) => s.id === "trip-a");
+      const bIdx = secs.findIndex((s) => s.id === "trip-b");
+      if (aIdx < 0 || bIdx < 0) return cat;
+      const parity = isoWeekParity();
+      // even week: A is current; odd week: B is current (swap display order + titles)
+      const currentIsA = parity === 0;
+      const a = secs[aIdx];
+      const b = secs[bIdx];
+      a.title = currentIsA ? "This week (Trip A)" : "Next week (Trip A)";
+      b.title = currentIsA ? "Next week (Trip B)" : "This week (Trip B)";
+      // put current trip section right after core
+      const coreIdx = secs.findIndex((s) => s.id === "core");
+      const rest = secs.filter((s) => s.id !== "trip-a" && s.id !== "trip-b");
+      const ordered = [];
+      for (const s of rest) {
+        ordered.push(s);
+        if (s.id === "core") {
+          ordered.push(currentIsA ? a : b);
+          ordered.push(currentIsA ? b : a);
+        }
+      }
+      if (!ordered.some((s) => s.id === "trip-a")) {
+        // core missing edge case
+        ordered.unshift(currentIsA ? a : b);
+        ordered.splice(1, 0, currentIsA ? b : a);
+      }
+      cat.sections = ordered;
+      cat._tripCurrent = currentIsA ? "trip-a" : "trip-b";
+      return cat;
+    }
+
     function render() {
       document.getElementById("store").textContent = (catalog && catalog.store) || REPO;
+      if (catalog && catalog._tripCurrent) {
+        const cur = catalog._tripCurrent === "trip-a" ? "Trip A" : "Trip B";
+        document.getElementById("store").textContent += " · This week: " + cur + " (A/B swap weekly)";
+      }
       const sm = document.getElementById("salesMeta");
       if (sales.valid) {
         sm.textContent =
@@ -675,6 +723,7 @@
         fetch(SALES_URL + "?ts=" + Date.now()).then((r) => (r.ok ? r.json() : { matched: {}, suggestions: [] })),
       ]);
       catalog = list;
+      catalog = applyTripRotation(catalog);
       catalog._suggestions = [];
       sales = salesData || { matched: {}, suggestions: [] };
       if (!token()) {
