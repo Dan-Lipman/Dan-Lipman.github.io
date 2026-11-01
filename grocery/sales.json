@@ -256,24 +256,6 @@
       ]
     },
     {
-      "name": "Tropicana Orange Juice",
-      "sale": {
-        "price": 6.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$6.99",
-        "unit_price": 6.99
-      },
-      "flyer_item_id": 1048877134,
-      "raw": "Tropicana Orange Juice. $6.99",
-      "score": 45.0,
-      "reasons": [
-        "produce:orange",
-        "Dan plan",
-        "demote:juice"
-      ]
-    },
-    {
       "name": "Stop & Shop Chicken Drumsticks or Thighs",
       "sale": {
         "price": 0.99,
@@ -318,6 +300,23 @@
       },
       "flyer_item_id": 1048867459,
       "raw": "Nature's Promise Carved Chicken Breast Strips. 2/ $7.0",
+      "score": 38.0,
+      "reasons": [
+        "Dan plan",
+        "lean poultry"
+      ]
+    },
+    {
+      "name": "Nature's Promise or Old Neighborhood Chicken Breasts",
+      "sale": {
+        "price": 3.99,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$3.99 /LB",
+        "unit_price": 3.99
+      },
+      "flyer_item_id": 1048870391,
+      "raw": "Nature's Promise or Old Neighborhood Chicken Breasts. $3.99 /lb.",
       "score": 38.0,
       "reasons": [
         "Dan plan",
