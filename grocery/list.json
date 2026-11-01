@@ -552,11 +552,18 @@
           "qty": "1",
           "price": 2.49,
           "note": "Ad hoc"
+        },
+        {
+          "id": "add-pizza-dough",
+          "name": "Pizza dough",
+          "qty": "1",
+          "price": 1.99,
+          "note": "Ad hoc"
         }
       ]
     }
   ],
-  "catalog_rev": "20261101T193300Z",
+  "catalog_rev": "20261101T193330Z",
   "rotation": {
     "mode": "weekly_ab_swap",
     "note": "Trip A and Trip B swap which is current each ISO week"
