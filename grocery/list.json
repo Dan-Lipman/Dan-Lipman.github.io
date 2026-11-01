@@ -14,51 +14,47 @@
         },
         {
           "id": "core-strawberries",
-          "name": "Organic strawberries (2 lb total)",
+          "name": "Organic strawberries",
           "qty": "2",
           "price": 8.98,
           "who": null,
-          "note": "2 lb total: two 1 lb packs or one 2 lb pack \u2014 pick cheaper"
+          "note": "2 lb total \u2014 two 1 lb packs or one 2 lb pack, whichever is cheaper"
         },
         {
           "id": "core-blueberries",
-          "name": "Organic blueberries (2 pints total)",
+          "name": "Organic blueberries",
           "qty": "2",
           "price": 7.98,
           "who": null,
-          "note": "2 pints total: two pints or one larger pack equaling 2 pints"
+          "note": "2 pints total \u2014 two pints or one larger pack equaling 2 pints"
         },
         {
           "id": "core-avocados",
           "name": "Hass avocados",
           "qty": "2",
           "price": 3.75,
-          "who": null,
-          "note": "2 per trip"
+          "who": null
         },
         {
           "id": "core-red-peppers",
           "name": "Red bell pepper",
           "qty": "1",
           "price": 2.74,
-          "who": null,
-          "note": "1 per trip"
+          "who": null
         },
         {
           "id": "core-pears",
           "name": "Bartlett pear",
           "qty": "1",
           "price": 2.19,
-          "who": null,
-          "note": "1 per trip"
+          "who": null
         },
         {
           "id": "core-cucumbers",
           "name": "English cucumbers",
           "qty": "2",
           "price": 2.98,
-          "who": null,
-          "note": "2 per trip"
+          "who": null
         },
         {
           "id": "core-turkey",
@@ -66,7 +62,7 @@
           "qty": "0.5",
           "price": 8.83,
           "who": "Dan",
-          "note": "Half pound (0.5 of 1 lb) per trip; qty is lb fraction. If out, lower-sodium",
+          "note": "Half pound per trip; qty is lb. If out, lower-sodium",
           "step": 0.25,
           "min_qty": 0.25
         },
@@ -76,7 +72,7 @@
           "qty": "1",
           "price": 6.44,
           "who": "Layla",
-          "note": "Preferred milk; if out, use Fairlife 2%"
+          "note": "Preferred; if unavailable use Fairlife 2%"
         },
         {
           "id": "core-2pct",
@@ -101,11 +97,11 @@
         },
         {
           "id": "core-raspberries",
-          "name": "Organic raspberries, 6\u20139 oz",
+          "name": "Organic raspberries",
           "qty": "1",
           "price": 4.39,
           "who": null,
-          "note": "Every other order; one 6 oz or 9 oz package"
+          "note": "Every other trip; one 6 oz or 9 oz package"
         },
         {
           "id": "a-apples",
