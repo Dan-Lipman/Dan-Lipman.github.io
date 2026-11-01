@@ -79,6 +79,12 @@
           "qty": "3",
           "price": 1.33,
           "note": "Weekly"
+        },
+        {
+          "id": "core-cara-oranges",
+          "name": "Cara Cara oranges",
+          "qty": "1",
+          "price": 2.12
         }
       ]
     },
@@ -385,20 +391,6 @@
           "note": "Ad hoc"
         },
         {
-          "id": "add-oranges",
-          "name": "Cara Cara oranges",
-          "qty": "1",
-          "price": 2.12,
-          "note": "Ad hoc"
-        },
-        {
-          "id": "add-maple-turkey",
-          "name": "Boar's Head maple honey turkey",
-          "qty": "1",
-          "price": 8.5,
-          "note": "Ad hoc"
-        },
-        {
           "id": "add-parmalat",
           "name": "Parmalat shelf-stable milk, 32 oz",
           "qty": "1",
@@ -544,11 +536,27 @@
           "qty": "1",
           "price": 3.99,
           "note": "Ad hoc"
+        },
+        {
+          "id": "add-siete-plain-chips",
+          "name": "Siete plain potato chips",
+          "qty": "1",
+          "price": 4.49,
+          "who": "Jessica",
+          "note": "Ad hoc; check label"
+        },
+        {
+          "id": "add-siete-ssv-chips",
+          "name": "Siete sea salt vinegar potato chips",
+          "qty": "1",
+          "price": 4.49,
+          "who": "Jessica",
+          "note": "Ad hoc; check label"
         }
       ]
     }
   ],
-  "catalog_rev": "20261101T192612Z",
+  "catalog_rev": "20261101T193143Z",
   "rotation": {
     "mode": "weekly_ab_swap",
     "note": "Trip A and Trip B swap which is current each ISO week"
