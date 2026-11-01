@@ -2,7 +2,7 @@
   "valid": "Oct 30, 2026 to Nov 05, 2026",
   "store": "Stop & Shop - Glastonbury (store_id 0631, postal 06033)",
   "flyer_run_id": 1203621,
-  "source": "Scraped Stop & Shop Flipp circular DOM for Glastonbury (store 0631); some flyer pages may be missing",
+  "source": "DOM accessibility list (no public product-JSON API/token exposed)",
   "matched": {
     "core-blueberries": {
       "circular_name": "Driscoll's Sweetest Batch or Legend Blueberries",
@@ -133,67 +133,12 @@
         "unit_price": 0.88
       },
       "flyer_item_id": 1048874723,
-      "raw": "Stop & Shop Vegetables or Tomatoes. $0.88"
-    },
-    {
-      "name": "Stop & Shop Pasta",
-      "sale": {
-        "price": 0.88,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$0.88",
-        "unit_price": 0.88
-      },
-      "flyer_item_id": 1048875592,
-      "raw": "Stop & Shop Pasta. $0.88"
-    },
-    {
-      "name": "Stop & Shop Chicken Drumsticks or Thighs",
-      "sale": {
-        "price": 0.99,
-        "qty_for": 1,
-        "unit": "LB",
-        "display": "$0.99 /LB",
-        "unit_price": 0.99
-      },
-      "flyer_item_id": 1048874949,
-      "raw": "Stop & Shop Chicken Drumsticks or Thighs. $0.99 /LB"
-    },
-    {
-      "name": "Fage Total Yogurt",
-      "sale": {
-        "price": 5.0,
-        "qty_for": 4,
-        "unit": "EA",
-        "display": "4/ $5.0",
-        "unit_price": 1.25
-      },
-      "flyer_item_id": 1048870844,
-      "raw": "Fage Total Yogurt. 4/ $5.0"
-    },
-    {
-      "name": "Hunt's Pasta Sauce",
-      "sale": {
-        "price": 5.0,
-        "qty_for": 4,
-        "unit": "EA",
-        "display": "4/ $5.0",
-        "unit_price": 1.25
-      },
-      "flyer_item_id": 1048876317,
-      "raw": "Hunt's Pasta Sauce. 4/ $5.0"
-    },
-    {
-      "name": "No Yolks or Penn Dutch Egg Noodles. FINAL PRICE",
-      "sale": {
-        "price": 1.49,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$1.49",
-        "unit_price": 1.49
-      },
-      "flyer_item_id": 1048871139,
-      "raw": "No Yolks or Penn Dutch Egg Noodles. FINAL PRICE $1.49 DIGITAL COUPON"
+      "raw": "Stop & Shop Vegetables or Tomatoes. $0.88",
+      "score": 65.0,
+      "reasons": [
+        "produce:tomatoes",
+        "Dan plan"
+      ]
     },
     {
       "name": "Ro-Tel Diced Tomatoes",
@@ -205,67 +150,12 @@
         "unit_price": 1.79
       },
       "flyer_item_id": 1048876383,
-      "raw": "Ro-Tel Diced Tomatoes. $1.79"
-    },
-    {
-      "name": "Bertolli Pasta or Alfredo Sauce",
-      "sale": {
-        "price": 1.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$1.99",
-        "unit_price": 1.99
-      },
-      "flyer_item_id": 1048875306,
-      "raw": "Bertolli Pasta or Alfredo Sauce. $1.99"
-    },
-    {
-      "name": "Stop & Shop Pasta Sauce",
-      "sale": {
-        "price": 1.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$1.99",
-        "unit_price": 1.99
-      },
-      "flyer_item_id": 1048876462,
-      "raw": "Stop & Shop Pasta Sauce. $1.99"
-    },
-    {
-      "name": "Lay's or Lay's Kettle Chips. FINAL PRICE",
-      "sale": {
-        "price": 1.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$1.99 /EA",
-        "unit_price": 1.99
-      },
-      "flyer_item_id": 1048871533,
-      "raw": "Lay's or Lay's Kettle Chips. FINAL PRICE $1.99 /EA. DIGITAL COUPON WHEN YOU BUY 2"
-    },
-    {
-      "name": "Ocean Spray Cranberry Sauce or Craisins",
-      "sale": {
-        "price": 5.0,
-        "qty_for": 2,
-        "unit": "EA",
-        "display": "2/ $5.0",
-        "unit_price": 2.5
-      },
-      "flyer_item_id": 1048876253,
-      "raw": "Ocean Spray Cranberry Sauce or Craisins. 2/ $5.0"
-    },
-    {
-      "name": "Pop-Tarts or Rice Krispies Treats",
-      "sale": {
-        "price": 5.0,
-        "qty_for": 2,
-        "unit": "EA",
-        "display": "2/ $5.0",
-        "unit_price": 2.5
-      },
-      "flyer_item_id": 1048876277,
-      "raw": "Pop-Tarts or Rice Krispies Treats. 2/ $5.0"
+      "raw": "Ro-Tel Diced Tomatoes. $1.79",
+      "score": 65.0,
+      "reasons": [
+        "produce:tomatoes",
+        "Dan plan"
+      ]
     },
     {
       "name": "Organic Honeycrisp Apples",
@@ -273,59 +163,50 @@
         "price": 2.88,
         "qty_for": 1,
         "unit": "LB",
-        "display": "$2.88 /lb",
+        "display": "$2.88 /LB",
         "unit_price": 2.88
       },
       "flyer_item_id": 1048870242,
-      "raw": "Organic Honeycrisp Apples. $2.88 /lb"
+      "raw": "Organic Honeycrisp Apples. $2.88 /lb.",
+      "score": 65.0,
+      "reasons": [
+        "produce:apples",
+        "Dan plan"
+      ]
     },
     {
-      "name": "Nature's Promise Organic Hummus",
+      "name": "Stop & Shop Spinach",
       "sale": {
-        "price": 2.99,
-        "qty_for": 1,
+        "price": 6.0,
+        "qty_for": 2,
         "unit": "EA",
-        "display": "$2.99 /ea",
-        "unit_price": 2.99
+        "display": "2/ $6.0",
+        "unit_price": 3.0
       },
-      "flyer_item_id": 1048871400,
-      "raw": "Nature's Promise Organic Hummus. $2.99 /ea"
+      "flyer_item_id": 1048867407,
+      "raw": "Stop & Shop Spinach. 2/ $6.0",
+      "score": 65.0,
+      "reasons": [
+        "produce:spinach",
+        "Dan plan"
+      ]
     },
     {
-      "name": "Pepperidge Farm Farmhouse Bread, Buns or Dinner Rolls",
+      "name": "Tropicana Orange Juice",
       "sale": {
-        "price": 2.99,
+        "price": 6.99,
         "qty_for": 1,
         "unit": "EA",
-        "display": "$2.99",
-        "unit_price": 2.99
+        "display": "$6.99",
+        "unit_price": 6.99
       },
-      "flyer_item_id": 1048871435,
-      "raw": "Pepperidge Farm Farmhouse Bread, Buns or Dinner Rolls. $2.99"
-    },
-    {
-      "name": "Rana Pasta or Sauce. FINAL PRICE",
-      "sale": {
-        "price": 2.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$2.99 /EA",
-        "unit_price": 2.99
-      },
-      "flyer_item_id": 1048872177,
-      "raw": "Rana Pasta or Sauce. FINAL PRICE $2.99 /EA. DIGITAL COUPON"
-    },
-    {
-      "name": "Hoffman's Cheddar Cheese. FINAL PRICE",
-      "sale": {
-        "price": 2.99,
-        "qty_for": 1,
-        "unit": "EA",
-        "display": "$2.99 /EA",
-        "unit_price": 2.99
-      },
-      "flyer_item_id": 1048871371,
-      "raw": "Hoffman's Cheddar Cheese. FINAL PRICE $2.99 /EA. DIGITAL COUPON"
+      "flyer_item_id": 1048877134,
+      "raw": "Tropicana Orange Juice. $6.99",
+      "score": 65.0,
+      "reasons": [
+        "produce:orange",
+        "Dan plan"
+      ]
     },
     {
       "name": "Stop & Shop Yellow or Mini Potatoes or Sweet Onions",
@@ -337,32 +218,111 @@
         "unit_price": 3.0
       },
       "flyer_item_id": 1048875291,
-      "raw": "Stop & Shop Yellow or Mini Potatoes or Sweet Onions. 2/ $6.0"
+      "raw": "Stop & Shop Yellow or Mini Potatoes or Sweet Onions. 2/ $6.0",
+      "score": 45.0,
+      "reasons": [
+        "produce:onions"
+      ]
     },
     {
-      "name": "Perdue Breaded Chicken Nuggets, Strips or Cutlets",
+      "name": "Dole or Taste of Inspirations Chopped Salad Kit",
       "sale": {
-        "price": 5.0,
-        "qty_for": 2,
+        "price": 3.49,
+        "qty_for": 1,
         "unit": "EA",
-        "display": "2/ $5.0",
-        "unit_price": 2.5
+        "display": "$3.49",
+        "unit_price": 3.49
       },
-      "flyer_item_id": 1048875619,
-      "raw": "Perdue Breaded Chicken Nuggets, Strips or Cutlets. 2/ $5.0"
+      "flyer_item_id": 1048868747,
+      "raw": "Dole or Taste of Inspirations Chopped Salad Kit. $3.49 /ea.",
+      "score": 45.0,
+      "reasons": [
+        "produce:salad"
+      ]
     },
     {
-      "name": "Perdue Chicken Wingettes",
+      "name": "Stop & Shop Rainbow Peppers",
+      "sale": {
+        "price": 3.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$3.99",
+        "unit_price": 3.99
+      },
+      "flyer_item_id": 1048867014,
+      "raw": "Stop & Shop Rainbow Peppers. $3.99 /ea.",
+      "score": 45.0,
+      "reasons": [
+        "produce:peppers"
+      ]
+    },
+    {
+      "name": "Stop & Shop Guacamole",
+      "sale": {
+        "price": 4.99,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$4.99",
+        "unit_price": 4.99
+      },
+      "flyer_item_id": 1048867792,
+      "raw": "Stop & Shop Guacamole. $4.99 /ea.",
+      "score": 45.0,
+      "reasons": [
+        "produce:guacamole"
+      ]
+    },
+    {
+      "name": "Stop & Shop Chicken Drumsticks or Thighs",
+      "sale": {
+        "price": 0.99,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$0.99 /LB",
+        "unit_price": 0.99
+      },
+      "flyer_item_id": 1048874949,
+      "raw": "Stop & Shop Chicken Drumsticks or Thighs. $0.99 /LB.",
+      "score": 38.0,
+      "reasons": [
+        "Dan plan",
+        "lean poultry"
+      ]
+    },
+    {
+      "name": "Nature's Promise Organic Hummus",
       "sale": {
         "price": 2.99,
         "qty_for": 1,
-        "unit": "LB",
-        "display": "$2.99 /lb",
+        "unit": "EA",
+        "display": "$2.99",
         "unit_price": 2.99
       },
-      "flyer_item_id": 1048870029,
-      "raw": "Perdue Chicken Wingettes. $2.99 /lb"
+      "flyer_item_id": 1048871400,
+      "raw": "Nature's Promise Organic Hummus. $2.99 /ea.",
+      "score": 38.0,
+      "reasons": [
+        "Dan plan",
+        "beans/hummus"
+      ]
+    },
+    {
+      "name": "Nature's Promise Carved Chicken Breast Strips",
+      "sale": {
+        "price": 7.0,
+        "qty_for": 2,
+        "unit": "EA",
+        "display": "2/ $7.0",
+        "unit_price": 3.5
+      },
+      "flyer_item_id": 1048867459,
+      "raw": "Nature's Promise Carved Chicken Breast Strips. 2/ $7.0",
+      "score": 38.0,
+      "reasons": [
+        "Dan plan",
+        "lean poultry"
+      ]
     }
   ],
-  "ranking_note": "Ranked for Dan meal plan (LDL/heart-healthy); not shown on page"
+  "ranking_note": "Ranked by household likelihood given dietary needs: produce and Dan heart-healthy staples, Layla plain pasta/milk, Jessica-safe brands; demote chips/sweets/breaded items/seafood and staples Jessica can't eat."
 }
