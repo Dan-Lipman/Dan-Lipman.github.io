@@ -594,7 +594,7 @@
           "<h2><span>Likely buys on sale</span></h2>" +
           '<p class="meta">Extra deals this week — tap ▴ to add with quantity.</p>';
         sales.suggestions.forEach((sug, idx) => {
-          const id = "sug-" + (sug.flyer_item_id || idx);
+          const id = sug.id || ("sug-" + (sug.flyer_item_id || idx) + "-" + idx);
           const fake = {
             id,
             name: sug.name,
