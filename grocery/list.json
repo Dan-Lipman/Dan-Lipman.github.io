@@ -559,11 +559,18 @@
           "qty": "1",
           "price": 1.99,
           "note": "Ad hoc"
+        },
+        {
+          "id": "add-chobani-nf-greek",
+          "name": "Chobani non-fat plain Greek yogurt (large container)",
+          "qty": "1",
+          "price": 5.99,
+          "note": "Ad hoc; large container"
         }
       ]
     }
   ],
-  "catalog_rev": "20261101T193330Z",
+  "catalog_rev": "20261101T195207Z",
   "rotation": {
     "mode": "weekly_ab_swap",
     "note": "Trip A and Trip B swap which is current each ISO week"
