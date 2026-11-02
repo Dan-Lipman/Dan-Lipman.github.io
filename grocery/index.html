@@ -203,6 +203,7 @@
     html[data-theme="dark"] .store-switch button[aria-pressed="true"] { color: #06281c; }
     .empty-state { text-align: center; padding: 28px 16px; color: var(--muted); }
     .empty-state strong { display: block; color: var(--text); font-size: 1.05rem; margin-bottom: 6px; }
+    body.locked #clear, body.locked #ready, body.locked #total { display: none; }
   </style>
   <script src="config.js"></script>
 </head>
@@ -242,8 +243,8 @@
     const REPO = CFG.repo || "Dan-Lipman/grocery-order";
     // Per-store data: S&S keeps the original files; Whole Foods has its own.
     const STORES = {
-      ss: { name: "Stop & Shop", file: CFG.selectionsFile || "selections.json", list: CFG.listUrl || "list.json", sales: CFG.salesUrl || "sales.json", label: "Stop & Shop #631 · 215 Glastonbury Blvd" },
-      wf: { name: "Whole Foods", file: "wf-selections.json", list: "wf-list.json", sales: "wf-sales.json", label: "Whole Foods via Amazon" },
+      ss: { name: "Stop & Shop", file: CFG.selectionsFile || "selections.json", list: CFG.listUrl || "data/list.json", sales: CFG.salesUrl || "data/sales.json", label: "Stop & Shop #631 · 215 Glastonbury Blvd" },
+      wf: { name: "Whole Foods", file: "wf-selections.json", list: "data/wf-list.json", sales: "data/wf-sales.json", label: "Whole Foods via Amazon" },
     };
     const STORE_KEY = "grocery_store";
     let storeKey = STORES[localStorage.getItem(STORE_KEY)] ? localStorage.getItem(STORE_KEY) : "ss";
@@ -341,6 +342,28 @@
       }
       if (res.status === 204 || !textBody) return null;
       return JSON.parse(textBody);
+    }
+
+    // Private data files (list/sales) live in the private repo; read raw via Contents API.
+    async function ghRaw(path) {
+      const t = token();
+      if (!t) { const e = new Error("missing token"); e.status = 401; throw e; }
+      const res = await fetch("https://api.github.com/repos/" + REPO + "/contents/" + path + "?ref=main&ts=" + Date.now(), {
+        cache: "no-store",
+        headers: { Accept: "application/vnd.github.raw", Authorization: "Bearer " + t, "X-GitHub-Api-Version": "2022-11-28" },
+      });
+      if (!res.ok) { const e = new Error("HTTP " + res.status); e.status = res.status; throw e; }
+      return res.json();
+    }
+    function renderLocked() {
+      catalog = null; sales = { matched: {}, suggestions: [] }; selected = new Set(); quantities = {}; ready = false;
+      document.getElementById("store").textContent = STORES[storeKey].name;
+      document.getElementById("salesMeta").textContent = "";
+      document.getElementById("total").textContent = "";
+      const main = document.getElementById("main");
+      main.innerHTML = '<section><div class="empty-state locked"><strong>Enter your token in Settings to view the list</strong></div></section>';
+      setStatus("");
+      document.body.classList.add("locked");
     }
 
     function b64encode(str) {
@@ -733,10 +756,9 @@
       document.getElementById("tokenInput").value = "";
       setStatus("");
       try {
-        await loadSelections();
+        await loadStore();
+        if (!catalog) throw new Error("token cannot read the list");
         document.getElementById("setup").classList.remove("show");
-        render();
-        setStatus("");
       } catch (e) {
         setStatus("Token test failed: " + e.message, "err");
         document.getElementById("setup").classList.add("show");
@@ -744,6 +766,7 @@
     };
     document.getElementById("clearToken").onclick = () => {
       localStorage.removeItem(TOKEN_KEY);
+      renderLocked();
       setStatus("Token removed from this browser.", "err");
     };
     document.getElementById("clear").onclick = async () => {
@@ -786,10 +809,19 @@
       const seq = ++loadSeq;
       document.getElementById("store").textContent = "Loading…";
       document.getElementById("main").innerHTML = "";
-      const [list, salesData] = await Promise.all([
-        fetch(LIST_URL + "?ts=" + Date.now()).then((r) => r.json()),
-        fetch(SALES_URL + "?ts=" + Date.now()).then((r) => (r.ok ? r.json() : { matched: {}, suggestions: [] })).catch(() => ({ matched: {}, suggestions: [] })),
-      ]);
+      document.body.classList.remove("locked");
+      if (!token()) { renderLocked(); return; }
+      let list, salesData;
+      try {
+        [list, salesData] = await Promise.all([
+          ghRaw(LIST_URL),
+          ghRaw(SALES_URL).catch((e) => { if ([401, 403].includes(e.status)) throw e; return { matched: {}, suggestions: [] }; }),
+        ]);
+      } catch (e) {
+        if (seq !== loadSeq) return;
+        if (!e.status || [401, 403, 404].includes(e.status)) { renderLocked(); return; }
+        throw e;
+      }
       if (seq !== loadSeq) return;
       catalog = list;
       catalog = applyTripRotation(catalog);
