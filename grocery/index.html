@@ -190,12 +190,29 @@
       .qty-row { grid-column: 3; grid-row: 1 / span 2; align-self: center; width: 96px; grid-template-columns: 28px 24px 28px; }
       button.step { width: 28px; height: 28px; }
     }
+    .store-switch {
+      display: flex; width: 100%; max-width: 420px; margin: 0 0 10px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 999px; padding: 3px; gap: 3px; box-shadow: var(--shadow);
+    }
+    .store-switch button {
+      flex: 1; border: 0; border-radius: 999px; padding: 8px 10px;
+      background: transparent; color: var(--muted); font-weight: 650; white-space: nowrap;
+    }
+    .store-switch button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+    html[data-theme="dark"] .store-switch button[aria-pressed="true"] { color: #06281c; }
+    .empty-state { text-align: center; padding: 28px 16px; color: var(--muted); }
+    .empty-state strong { display: block; color: var(--text); font-size: 1.05rem; margin-bottom: 6px; }
   </style>
   <script src="config.js"></script>
 </head>
 <body>
   <header>
     <div class="header-inner">
+      <div class="store-switch" role="group" aria-label="Store">
+        <button type="button" data-store="ss" aria-pressed="true">Stop &amp; Shop</button>
+        <button type="button" data-store="wf" aria-pressed="false">Whole Foods</button>
+      </div>
       <h1>Grocery order</h1>
       <div class="sub" id="store">Loading…</div>
       <div class="sub" id="salesMeta"></div>
@@ -223,9 +240,16 @@
   <script>
     const CFG = window.GROCERY_CONFIG || {};
     const REPO = CFG.repo || "Dan-Lipman/grocery-order";
-    const FILE = CFG.selectionsFile || "selections.json";
-    const LIST_URL = CFG.listUrl || "list.json";
-    const SALES_URL = CFG.salesUrl || "sales.json";
+    // Per-store data: S&S keeps the original files; Whole Foods has its own.
+    const STORES = {
+      ss: { name: "Stop & Shop", file: CFG.selectionsFile || "selections.json", list: CFG.listUrl || "list.json", sales: CFG.salesUrl || "sales.json", label: "Stop & Shop #631 · 215 Glastonbury Blvd" },
+      wf: { name: "Whole Foods", file: "wf-selections.json", list: "wf-list.json", sales: "wf-sales.json", label: "Whole Foods via Amazon" },
+    };
+    const STORE_KEY = "grocery_store";
+    let storeKey = STORES[localStorage.getItem(STORE_KEY)] ? localStorage.getItem(STORE_KEY) : "ss";
+    let FILE = STORES[storeKey].file;
+    let LIST_URL = STORES[storeKey].list;
+    let SALES_URL = STORES[storeKey].sales;
     const TOKEN_KEY = "grocery_gh_pat";
     const money = (n) => "$" + (Number(n) || 0).toFixed(2);
 
@@ -338,7 +362,14 @@
     }
 
     async function loadSelections() {
-      const data = await refreshSha();
+      let data;
+      try { data = await refreshSha(); }
+      catch (e) {
+        if (storeKey !== "ss" && e.status === 404) {
+          fileSha = null; selected = new Set(); quantities = {}; ready = false; return;
+        }
+        throw e;
+      }
       const sel = JSON.parse(b64decode(data.content.replace(/\n/g, "")));
       selected = new Set(sel.selected || []);
       quantities = sel.quantities || {};
@@ -359,10 +390,11 @@
         selected: [...selected].sort(),
         quantities: q,
         ready,
+        store: STORES[storeKey].name,
         updated_at: new Date().toISOString(),
       };
       const body = {
-        message: "Update order selections",
+        message: "Update " + STORES[storeKey].name + " order selections",
         content: b64encode(JSON.stringify(sel, null, 2) + "\n"),
         branch: "main",
       };
@@ -559,13 +591,17 @@
       return cat;
     }
 
+    function catalogHasItems() {
+      return !!(catalog && (catalog.sections || []).some((s) => (s.items || []).length));
+    }
     function render() {
-      document.getElementById("store").textContent = (catalog && catalog.store) || REPO;
-      if (catalog && catalog._tripCurrent) {
+      document.getElementById("store").textContent = STORES[storeKey].label;
+      if (catalog && catalog._tripCurrent && catalogHasItems()) {
         const cur = catalog._tripCurrent === "trip-a" ? "Trip A" : "Trip B";
         document.getElementById("store").textContent += " · This week: " + cur + " (A/B swap weekly)";
       }
       const sm = document.getElementById("salesMeta");
+      sm.textContent = "";
       if (sales.valid) {
         sm.textContent =
           "Sale week " + sales.valid +
@@ -573,6 +609,14 @@
       }
       const main = document.getElementById("main");
       main.innerHTML = "";
+      if (!catalogHasItems()) {
+        const el = document.createElement("section");
+        el.innerHTML = '<div class="empty-state"><strong>' + STORES[storeKey].name +
+          ' list coming soon</strong>Items will be added from past orders. Switch back to Stop &amp; Shop anytime.</div>';
+        main.appendChild(el);
+        recompute();
+        return;
+      }
 
       for (const section of catalog.sections) {
         const el = document.createElement("section");
@@ -717,11 +761,36 @@
       catch (e) { setStatus("Ready failed: " + e.message, "err"); }
     };
 
-    (async () => {
+    function markSwitch() {
+      document.querySelectorAll(".store-switch button").forEach((b) => {
+        b.setAttribute("aria-pressed", b.dataset.store === storeKey ? "true" : "false");
+      });
+    }
+    let loadSeq = 0;
+    document.querySelectorAll(".store-switch button").forEach((b) => {
+      b.onclick = async () => {
+        if (b.dataset.store === storeKey) return;
+        try { await saveChain; } catch (_) {}  // finish pending saves to the old store's file
+        storeKey = b.dataset.store;
+        localStorage.setItem(STORE_KEY, storeKey);
+        FILE = STORES[storeKey].file; LIST_URL = STORES[storeKey].list; SALES_URL = STORES[storeKey].sales;
+        fileSha = null; selected = new Set(); quantities = {}; ready = false;
+        markSwitch();
+        setStatus("");
+        loadStore().catch((e) => { document.getElementById("store").textContent = "Failed to load: " + e.message; });
+      };
+    });
+    markSwitch();
+
+    async function loadStore() {
+      const seq = ++loadSeq;
+      document.getElementById("store").textContent = "Loading…";
+      document.getElementById("main").innerHTML = "";
       const [list, salesData] = await Promise.all([
         fetch(LIST_URL + "?ts=" + Date.now()).then((r) => r.json()),
-        fetch(SALES_URL + "?ts=" + Date.now()).then((r) => (r.ok ? r.json() : { matched: {}, suggestions: [] })),
+        fetch(SALES_URL + "?ts=" + Date.now()).then((r) => (r.ok ? r.json() : { matched: {}, suggestions: [] })).catch(() => ({ matched: {}, suggestions: [] })),
       ]);
+      if (seq !== loadSeq) return;
       catalog = list;
       catalog = applyTripRotation(catalog);
       catalog._suggestions = [];
@@ -734,13 +803,15 @@
       }
       try {
         await loadSelections();
+        if (seq !== loadSeq) return;
         render();
       } catch (e) {
         document.getElementById("setup").classList.add("show");
         render();
         setStatus("Could not load saved picks: " + e.message, "err");
       }
-    })().catch((e) => {
+    }
+    loadStore().catch((e) => {
       document.getElementById("store").textContent = "Failed to load: " + e.message;
     });
   </script>

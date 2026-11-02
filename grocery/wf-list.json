@@ -1,0 +1,11 @@
+{
+  "store": "Whole Foods via Amazon",
+  "catalog_rev": "20261102T000725Z",
+  "rotation": {"mode": "weekly_ab_swap", "note": "Trip A and Trip B swap which is current each ISO week"},
+  "sections": [
+    {"id": "core", "title": "Every trip", "items": []},
+    {"id": "trip-a", "title": "Trip A", "items": []},
+    {"id": "trip-b", "title": "Trip B", "items": []},
+    {"id": "add", "title": "Add as needed", "items": []}
+  ]
+}
