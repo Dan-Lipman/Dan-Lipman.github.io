@@ -1,11 +1,1072 @@
 {
-  "store": "Whole Foods via Amazon",
-  "catalog_rev": "20261102T000725Z",
-  "rotation": {"mode": "weekly_ab_swap", "note": "Trip A and Trip B swap which is current each ISO week"},
+  "store": "Whole Foods Market \u00b7 Glastonbury CT (store 10336)",
+  "catalog_rev": "20261102T002502Z",
+  "rotation": {
+    "mode": "weekly_ab_swap",
+    "note": "Trip A and Trip B swap which is current each ISO week"
+  },
   "sections": [
-    {"id": "core", "title": "Every trip", "items": []},
-    {"id": "trip-a", "title": "Trip A", "items": []},
-    {"id": "trip-b", "title": "Trip B", "items": []},
-    {"id": "add", "title": "Add as needed", "items": []}
+    {
+      "id": "core",
+      "title": "Every trip",
+      "items": [
+        {
+          "id": "wf-core-bananas",
+          "name": "Organic banana bunch",
+          "qty": "1",
+          "price": 0.79,
+          "who": "All",
+          "note": "$/lb \u00b7 prefer organic bunch; alt conventional $0.59/lb \u00b7 ASIN B0014GPSKQ"
+        },
+        {
+          "id": "wf-core-strawberries",
+          "name": "Organic strawberries",
+          "qty": "1",
+          "price": 5.99,
+          "who": "All",
+          "note": "Qty = pounds. If qty 2, choose the 32 oz pack ($9.99 last order, B07PQNBKCK); cheaper than 2\u00d71 lb \u00b7 1 lb ASIN B002B8Z98W"
+        },
+        {
+          "id": "wf-core-blueberries",
+          "name": "Driscoll's blueberries, 11 oz",
+          "qty": "1",
+          "price": 7.99,
+          "who": "All",
+          "note": "Alt: Driscoll's Sweetest Batch 18 oz $10.99 (B0GHZ6PMNW); organic pint $6.99 (B077N7TR5G); conventional pint $4.49 (B003AYKYIG) \u00b7 ASIN B07YFDQXQ9"
+        },
+        {
+          "id": "wf-core-avocados",
+          "name": "Hass avocados, medium",
+          "qty": "2",
+          "price": 1.49,
+          "who": "All",
+          "note": "Alt: large Hass $1.99 \u00d72 (B0B2W8HBZ8) \u00b7 ASIN B000NOGKN4"
+        },
+        {
+          "id": "wf-core-turkey",
+          "name": "Mary's No Salt Turkey, sliced",
+          "qty": "0.5",
+          "price": 12.99,
+          "who": "Dan",
+          "note": "Qty is lb (0.37\u20130.68 lb per order); low sodium \u00b7 ASIN B0CJ9RNR4F",
+          "step": 0.25,
+          "min_qty": 0.25
+        },
+        {
+          "id": "wf-core-rotisserie",
+          "name": "Rotisserie chicken",
+          "qty": "1",
+          "price": 11.99,
+          "who": "All",
+          "note": "Remove skin for Dan. Check label for Jessica (seasoning may contain corn/soy-derived ingredients; not verified) \u00b7 ASIN B07FZLYJ8W \u00b7 cold variant B07FZ921F3"
+        },
+        {
+          "id": "wf-core-lactaid",
+          "name": "Lactaid Reduced Fat 2% Milk, 64 oz",
+          "qty": "1",
+          "price": 4.99,
+          "who": "Layla",
+          "note": "Dairy (lactose-free), not for Jessica \u00b7 ASIN B000O6EFHO"
+        },
+        {
+          "id": "wf-core-siete-lime",
+          "name": "Siete Lime Grain Free Tortilla Chips, 5 oz",
+          "qty": "2",
+          "price": 4.99,
+          "who": "Jessica",
+          "note": "Label OK: cassava, avocado oil, coconut flour, chia, salt, citric acid, lime oil \u00b7 ASIN B071XNQQTZ"
+        }
+      ]
+    },
+    {
+      "id": "trip-a",
+      "title": "Trip A",
+      "items": [
+        {
+          "id": "wf-a-sumo",
+          "name": "Sumo Citrus",
+          "qty": "1",
+          "price": 4.99,
+          "who": "All",
+          "note": "$/lb, about 0.45 lb each \u00b7 ASIN B07FZG6D12"
+        },
+        {
+          "id": "wf-a-microgreens",
+          "name": "AeroFarms Broccoli Microgreens, 2 oz",
+          "qty": "1",
+          "price": 4.79,
+          "who": "All",
+          "note": "ASIN B0B13V326M"
+        },
+        {
+          "id": "wf-a-broccoli",
+          "name": "Organic broccoli",
+          "qty": "1.5",
+          "price": 3.99,
+          "who": "Dan",
+          "note": "Qty is lb \u00b7 alt: conventional crowns $2.99/lb \u00b7 ASIN B000P6L3K0",
+          "step": 0.5,
+          "min_qty": 0.5
+        },
+        {
+          "id": "wf-a-chicken",
+          "name": "365 Organic boneless skinless chicken breast",
+          "qty": "1.5",
+          "price": 7.99,
+          "who": "Dan",
+          "note": "Qty is lb; lean protein \u00b7 ASIN B0787WZS2C",
+          "step": 0.25,
+          "min_qty": 0.5
+        },
+        {
+          "id": "wf-a-steelcut",
+          "name": "Bob's Red Mill Organic GF Steel Cut Oats, 24 oz",
+          "qty": "1",
+          "price": 8.99,
+          "who": "Dan, Jessica",
+          "note": "Certified GF; LDL-friendly \u00b7 ASIN B01I7Y58G6"
+        },
+        {
+          "id": "wf-a-tomatoes",
+          "name": "Sunset Wild Wonders tomatoes, 10 oz",
+          "qty": "1",
+          "price": 5.99,
+          "who": "All",
+          "note": "Alt: Sunset Angel Sweet pint $4.49 (B07G4QWRNF) \u00b7 ASIN B08485ZZBW"
+        },
+        {
+          "id": "wf-a-cosmic",
+          "name": "Cosmic Crisp apples",
+          "qty": "1",
+          "price": 3.29,
+          "who": "All",
+          "note": "Qty is lb \u00b7 ASIN B082FZ4L2N",
+          "step": 0.5,
+          "min_qty": 0.5
+        },
+        {
+          "id": "wf-a-delicata",
+          "name": "Organic delicata squash",
+          "qty": "1",
+          "price": 2.49,
+          "who": "All",
+          "note": "Qty is lb \u00b7 ASIN B07KHH8K4L",
+          "step": 0.5,
+          "min_qty": 0.5
+        }
+      ]
+    },
+    {
+      "id": "trip-b",
+      "title": "Trip B",
+      "items": [
+        {
+          "id": "wf-b-cara",
+          "name": "Cara Cara navel oranges",
+          "qty": "1.5",
+          "price": 2.49,
+          "who": "All",
+          "note": "Qty is lb \u00b7 ASIN B07NQZTTF8",
+          "step": 0.5,
+          "min_qty": 0.5
+        },
+        {
+          "id": "wf-b-microgreens",
+          "name": "AeroFarms Rainbow Mix Microgreens, 2 oz",
+          "qty": "1",
+          "price": 4.79,
+          "who": "All",
+          "note": "ASIN B0B1468YMV"
+        },
+        {
+          "id": "wf-b-spinach",
+          "name": "365 Organic Baby Spinach, 16 oz",
+          "qty": "1",
+          "price": 6.29,
+          "who": "Dan",
+          "note": "Alt size: 5 oz $3.99 (B0BFG3BHNH) \u00b7 ASIN B074H55NJK"
+        },
+        {
+          "id": "wf-b-cucumber",
+          "name": "English cucumber",
+          "qty": "1",
+          "price": 2.19,
+          "who": "All",
+          "note": "Alt: organic $2.99 (B0040QYLW8) \u00b7 ASIN B001PLET96"
+        },
+        {
+          "id": "wf-b-rolled",
+          "name": "Bob's Red Mill Organic GF Quick Rolled Oats, 28 oz",
+          "qty": "1",
+          "price": 9.69,
+          "who": "Dan, Jessica",
+          "note": "Certified GF; LDL-friendly \u00b7 ASIN B07C9KS8PJ"
+        },
+        {
+          "id": "wf-b-raspberries",
+          "name": "Organic red raspberries, 6 oz",
+          "qty": "1",
+          "price": 4.99,
+          "who": "All",
+          "note": "Alt size: 12 oz $6.79 (B08VLD2XR7) \u00b7 ASIN B0031Q80UM"
+        },
+        {
+          "id": "wf-b-kiwi",
+          "name": "Organic green kiwi, 16 oz",
+          "qty": "1",
+          "price": 6.29,
+          "who": "All",
+          "note": "Bought in 2 orders; core candidate \u00b7 ASIN B07LFT2C9H"
+        },
+        {
+          "id": "wf-b-sweet-potato",
+          "name": "Organic Japanese sweet potato",
+          "qty": "1",
+          "price": 3.49,
+          "who": "All",
+          "note": "Qty is lb \u00b7 ASIN B000P6L4B8",
+          "step": 0.5,
+          "min_qty": 0.5
+        },
+        {
+          "id": "wf-b-koch-turkey",
+          "name": "Koch's Organic Ground Turkey Breast, 16 oz",
+          "qty": "1",
+          "price": 9.99,
+          "who": "Dan",
+          "note": "Lean protein \u00b7 ASIN B091CCD4T7"
+        },
+        {
+          "id": "wf-b-asparagus",
+          "name": "Organic asparagus",
+          "qty": "1",
+          "price": 6.99,
+          "who": "All",
+          "note": "Qty is lb \u00b7 ASIN B002QY5PB2",
+          "step": 0.5,
+          "min_qty": 0.5
+        }
+      ]
+    },
+    {
+      "id": "add",
+      "title": "Add as needed",
+      "items": [
+        {
+          "id": "wf-add-hummus",
+          "name": "Ithaca Olive Oil & Sea Salt Hummus, 10 oz",
+          "qty": "1",
+          "price": 5.99,
+          "who": "Jessica, Dan",
+          "note": "Label OK: chickpeas, EVOO, tahini, lemon, garlic, salt, citric acid. Alt size 17 oz $8.99 (B0GMJZMJWD) \u00b7 ASIN B0GMK1HGZ1"
+        },
+        {
+          "id": "wf-add-black-beans",
+          "name": "365 Organic Unsalted Black Beans, 13.4 oz",
+          "qty": "2",
+          "price": 1.39,
+          "who": "Dan",
+          "note": "Label: beans, water. LDL-friendly \u00b7 ASIN B074H55M1H"
+        },
+        {
+          "id": "wf-add-kidney-beans",
+          "name": "365 Organic Kidney Beans No Salt, 13.4 oz",
+          "qty": "2",
+          "price": 1.39,
+          "who": "Dan",
+          "note": "Label: beans, water \u00b7 ASIN B074H5J39S"
+        },
+        {
+          "id": "wf-add-greek",
+          "name": "365 Organic Greek Nonfat Plain Yogurt, 32 oz",
+          "qty": "1",
+          "price": 6.99,
+          "who": "Dan",
+          "note": "Dairy, not for Jessica \u00b7 ASIN B07MYD18HM"
+        },
+        {
+          "id": "wf-add-skyr",
+          "name": "Icelandic Provisions Oatmilk Skyr, Strawberry, 5 oz",
+          "qty": "2",
+          "price": 2.19,
+          "who": "Jessica",
+          "note": "Plant-based; WF page lists only cultures, full label not verified for corn/soy \u00b7 ASIN B0CB1QCHL5"
+        },
+        {
+          "id": "wf-add-eggs",
+          "name": "Pete & Gerry's Organic Pasture-Raised Large Eggs, 12 ct",
+          "qty": "1",
+          "price": 7.99,
+          "who": "Jessica, Layla",
+          "note": "Label: eggs \u00b7 ASIN B0F8PKX2XS"
+        },
+        {
+          "id": "wf-add-siggis",
+          "name": "Siggi's Nonfat Vanilla Skyr, 4 ct",
+          "qty": "1",
+          "price": 6.49,
+          "who": "Dan",
+          "note": "Dairy; LDL-friendly \u00b7 ASIN B097CMQ51P"
+        },
+        {
+          "id": "wf-add-siete-seasalt",
+          "name": "Siete Sea Salt Grain Free Tortilla Chips, 5 oz",
+          "qty": "1",
+          "price": 4.99,
+          "who": "Jessica",
+          "note": "Label OK: cassava, avocado oil, coconut flour, chia, salt \u00b7 ASIN B071XY8BDQ"
+        },
+        {
+          "id": "wf-add-simple-mills",
+          "name": "Simple Mills Almond Flour Crackers, Sea Salt, 7 oz",
+          "qty": "1",
+          "price": 7.49,
+          "who": "Jessica",
+          "note": "Label OK: nut/seed flour, tapioca, cassava, sunflower oil \u00b7 ASIN B08ZFM4TSM"
+        },
+        {
+          "id": "wf-add-psyllium",
+          "name": "365 Organic Psyllium Husk, 12 oz",
+          "qty": "1",
+          "price": 18.49,
+          "who": "Dan",
+          "note": "LDL-friendly fiber \u00b7 ASIN B0CDQJRFGX"
+        },
+        {
+          "id": "wf-add-pb",
+          "name": "Organic roasted peanut butter, fresh-ground",
+          "qty": "1",
+          "price": 5.29,
+          "who": "All",
+          "note": "Qty is lb \u00b7 alt: Sunridge honey roasted $5.69/lb \u00b7 ASIN B07BPWTQNN",
+          "step": 0.5,
+          "min_qty": 0.5
+        },
+        {
+          "id": "wf-add-dececco",
+          "name": "De Cecco Protein Boost Fusilli, 14 oz",
+          "qty": "1",
+          "price": 5.49,
+          "who": "Dan",
+          "note": "Semolina (wheat), NOT for Jessica \u00b7 ASIN B0GDGVZFQS"
+        },
+        {
+          "id": "wf-add-rice-jasmine-brown",
+          "name": "Lundberg Organic Jasmine Brown Rice, 32 oz",
+          "qty": "1",
+          "price": 9.49,
+          "who": "All",
+          "note": "Whole grain, good for Dan \u00b7 ASIN B000QV32CG"
+        },
+        {
+          "id": "wf-add-rice-short-brown",
+          "name": "Lundberg Organic Short Grain Brown Rice, 32 oz",
+          "qty": "1",
+          "price": 8.49,
+          "who": "All",
+          "note": "Whole grain \u00b7 ASIN B000QV32CQ"
+        },
+        {
+          "id": "wf-add-rice-black",
+          "name": "Lundberg Black Pearl Rice, 16 oz",
+          "qty": "1",
+          "price": 5.89,
+          "who": "All",
+          "note": "Whole grain \u00b7 ASIN B01M6WVEAA"
+        },
+        {
+          "id": "wf-add-rice-white",
+          "name": "Lundberg Upcycled Jasmine White Rice, 2 lb",
+          "qty": "1",
+          "price": 8.49,
+          "who": "All",
+          "note": "ASIN B0DQQGSN3R"
+        },
+        {
+          "id": "wf-add-padthai",
+          "name": "Lotus Foods Organic Brown Rice Pad Thai Noodles, 8 oz",
+          "qty": "1",
+          "price": 4.29,
+          "who": "Jessica",
+          "note": "ASIN B0778TJ17K"
+        },
+        {
+          "id": "wf-add-pho",
+          "name": "Lotus Foods Rice Pho Noodles, 8 oz",
+          "qty": "1",
+          "price": 4.29,
+          "who": "Jessica",
+          "note": "ASIN B08TH9FK5R"
+        },
+        {
+          "id": "wf-add-cocojune-protein",
+          "name": "Cocojune Organic Vanilla Protein Coconut Yogurt, 16.8 oz",
+          "qty": "1",
+          "price": 9.99,
+          "who": "Jessica",
+          "note": "Label not on WF page; check for soy/corn (protein source) \u00b7 ASIN B0FGQFLTDJ"
+        },
+        {
+          "id": "wf-add-forager",
+          "name": "Forager Cashew Kefir, Plain Unsweetened, 28 oz",
+          "qty": "1",
+          "price": 6.49,
+          "who": "Jessica",
+          "note": "Not found in WF search; label not verified \u00b7 ASIN B0784P96Q3"
+        },
+        {
+          "id": "wf-add-mousse",
+          "name": "WF Chocolate Triple Mousse Cake, 5 oz",
+          "qty": "1",
+          "price": 6.0,
+          "who": "Dan, Layla",
+          "note": "Treat; contains dairy and wheat (likely), not for Jessica; high saturated fat for Dan \u00b7 ASIN B07G7GBHCZ"
+        },
+        {
+          "id": "wf-add-opal",
+          "name": "Organic Opal apples",
+          "qty": "1",
+          "price": 2.99,
+          "who": "All",
+          "note": "Qty is lb \u00b7 ASIN B07JN25KY5",
+          "step": 0.5,
+          "min_qty": 0.5
+        },
+        {
+          "id": "wf-add-apple-tote",
+          "name": "Apple Totes",
+          "qty": "4",
+          "price": 1.99,
+          "who": "All",
+          "note": "Qty is lb \u00b7 ASIN B07FZKSGNG",
+          "step": 1,
+          "min_qty": 1
+        },
+        {
+          "id": "wf-add-guac",
+          "name": "Mild guacamole, small",
+          "qty": "1",
+          "price": 11.99,
+          "who": "All",
+          "note": "Qty is lb. Label OK: avocado, pico, lime, salt, garlic, pepper \u00b7 ASIN B09WZ6D6MM",
+          "step": 0.5,
+          "min_qty": 0.5
+        },
+        {
+          "id": "wf-add-salsa",
+          "name": "Mitchell's Fresh Medium Salsa, 15 oz",
+          "qty": "1",
+          "price": 4.99,
+          "who": "All",
+          "note": "Label not on WF page; check for corn/soy \u00b7 ASIN B07FYGN1JP"
+        },
+        {
+          "id": "wf-add-botana",
+          "name": "Siete Jalape\u00f1o Botana Sauce, 8.5 oz",
+          "qty": "1",
+          "price": 5.69,
+          "who": "Jessica",
+          "note": "Label OK: jalape\u00f1o, avocado oil, ACV, dates, konjac (no corn or soy) \u00b7 ASIN B0BQCH82F4"
+        },
+        {
+          "id": "wf-add-olives",
+          "name": "Divina Castelvetrano olives",
+          "qty": "0.6",
+          "price": 11.99,
+          "who": "Jessica",
+          "note": "Qty is lb. Label: olives, water, salt, sunflower oil, citric/ascorbic/lactic acid (lactic acid is often corn-fermented; low risk) \u00b7 ASIN B07BMCMRQZ",
+          "step": 0.25,
+          "min_qty": 0.25
+        },
+        {
+          "id": "wf-add-sauz",
+          "name": "Sauz Hot Honey Marinara, 25 oz",
+          "qty": "1",
+          "price": 8.69,
+          "who": "All",
+          "note": "Label not checked \u00b7 ASIN B0CP2SD9RM"
+        },
+        {
+          "id": "wf-add-pesto",
+          "name": "Gotham Greens Vegan Pesto, 6.5 oz",
+          "qty": "1",
+          "price": 8.79,
+          "who": "Jessica",
+          "note": "Label not checked \u00b7 ASIN B0793K9ZWS"
+        },
+        {
+          "id": "wf-add-fries",
+          "name": "365 Organic Straight Cut Fries, 16 oz",
+          "qty": "1",
+          "price": 3.99,
+          "who": "All",
+          "note": "Label not checked \u00b7 ASIN B08NMR29VM"
+        },
+        {
+          "id": "wf-add-califia-oat",
+          "name": "Califia Organic Oat Milk Original, 48 oz",
+          "qty": "1",
+          "price": 6.49,
+          "who": "Jessica",
+          "note": "Label not checked (gellan possible) \u00b7 ASIN B0BCDQ4W6G"
+        },
+        {
+          "id": "wf-add-malk-pumpkin",
+          "name": "Malk Organic Pumpkin Spice Almond Milk, 28 oz",
+          "qty": "1",
+          "price": 7.99,
+          "who": "Jessica",
+          "note": "Seasonal \u00b7 ASIN B0D2JJTXW8"
+        },
+        {
+          "id": "wf-add-creamer-horchata",
+          "name": "Califia Horchata Almond Creamer, 25.4 oz",
+          "qty": "1",
+          "price": 6.99,
+          "who": "Jessica",
+          "note": "Label OK: almondmilk, cane sugar, natural flavor, baking soda, salt, cinnamon (no gellan/lecithin listed) \u00b7 ASIN B0GRK3F468"
+        },
+        {
+          "id": "wf-add-creamer-coconut",
+          "name": "Califia Organic Toasted Coconut Creamer, 25.4 oz",
+          "qty": "1",
+          "price": 6.49,
+          "who": "Jessica",
+          "note": "Label OK: coconut milk, cane sugar, vanilla, natural flavor, baking soda, salt \u00b7 ASIN B0GPFPS3CF"
+        },
+        {
+          "id": "wf-add-violife",
+          "name": "Violife Smoked Provolone Slices, 7.05 oz",
+          "qty": "2",
+          "price": 5.99,
+          "who": "Jessica",
+          "note": "FLAG: modified food starch from potato AND CORN; no soy \u00b7 ASIN B07FYWCFLN"
+        },
+        {
+          "id": "wf-add-mush-vanilla",
+          "name": "MUSH Vanilla Bean Overnight Oats, 5 oz",
+          "qty": "1",
+          "price": 2.19,
+          "who": "Jessica",
+          "note": "Label OK: almond milk, oats, dates, vanilla, salt (GF status not verified) \u00b7 ASIN B08J97BY5J"
+        },
+        {
+          "id": "wf-add-mush-choc",
+          "name": "MUSH Dark Chocolate Overnight Oats, 5 oz",
+          "qty": "1",
+          "price": 2.19,
+          "who": "Jessica",
+          "note": "Label OK: almond milk, oats, dates, cocoa, salt \u00b7 ASIN B08J9739CC"
+        },
+        {
+          "id": "wf-add-mush-pbcc",
+          "name": "MUSH PB Chocolate Chip Protein Oats, 5.5 oz",
+          "qty": "1",
+          "price": 2.69,
+          "who": "Jessica",
+          "note": "Label OK: oat milk, oats, peanuts, dates, chocolate (no soy lecithin listed) \u00b7 ASIN B09VQDDH7N"
+        },
+        {
+          "id": "wf-add-mush-pumpkin",
+          "name": "MUSH Pumpkin Pie Overnight Oats, 5 oz",
+          "qty": "1",
+          "price": 2.29,
+          "who": "Jessica",
+          "note": "Seasonal; label not on WF page \u00b7 ASIN B09C7BSDQ3"
+        },
+        {
+          "id": "wf-add-rebbl",
+          "name": "Rebbl Organic Protein Drink, 12 oz",
+          "qty": "1",
+          "price": 4.99,
+          "who": "Jessica",
+          "note": "FLAG: gellan gum (corn-sugar-fermented, sensitive people react); has oat milk (labeled GF oats); no soy \u00b7 ASIN B0BZQLCL5M"
+        },
+        {
+          "id": "wf-add-popbottle",
+          "name": "Pop & Bottle Cold Brew Almond Latte, 11 oz",
+          "qty": "1",
+          "price": 3.99,
+          "who": "Jessica",
+          "note": "Label OK: almond milk, dates, coffee, salt \u00b7 ASIN B07B8SKKQJ"
+        },
+        {
+          "id": "wf-add-spindrift",
+          "name": "Spindrift Unsweetened Black Tea Lemon, 6 pk",
+          "qty": "1",
+          "price": 9.99,
+          "who": "All",
+          "note": "ASIN B0GTMQQNK4"
+        },
+        {
+          "id": "wf-add-sweetlorens",
+          "name": "Sweet Loren's GF Vegan Pumpkin Spice Cookie Dough, 9.6 oz",
+          "qty": "1",
+          "price": 6.99,
+          "who": "Jessica",
+          "note": "Seasonal. Label: oat/tapioca/potato flour, sugar, palm oil, natural flavors (no corn or soy listed) \u00b7 ASIN B0BTV13L32"
+        },
+        {
+          "id": "wf-add-reelie-salt",
+          "name": "Artisan Tropic Reelie Organic Crackers, Sea Salt, 4.25 oz",
+          "qty": "1",
+          "price": 3.45,
+          "who": "Jessica",
+          "note": "Not found in WF search, so label and price not re-verified \u00b7 ASIN B0CM6W6FS1"
+        },
+        {
+          "id": "wf-add-reelie-tomato",
+          "name": "Artisan Tropic Reelie Organic Crackers, Tomato Herb, 4.25 oz",
+          "qty": "1",
+          "price": 3.45,
+          "who": "Jessica",
+          "note": "Not re-verified \u00b7 ASIN B0CM6RNMSG"
+        },
+        {
+          "id": "wf-add-siete-potato-salt",
+          "name": "Siete Potato Chips, Sea Salt, 5.5 oz",
+          "qty": "1",
+          "price": 3.99,
+          "who": "Jessica",
+          "note": "ASIN B08Y6SM2TD"
+        },
+        {
+          "id": "wf-add-siete-potato-vinegar",
+          "name": "Siete Potato Chips, Sea Salt & Vinegar, 5.5 oz",
+          "qty": "1",
+          "price": 3.99,
+          "who": "Jessica",
+          "note": "Check vinegar powder source \u00b7 ASIN B08Y6R77VQ"
+        },
+        {
+          "id": "wf-add-siete-potato-bbq",
+          "name": "Siete Potato Chips, Chipotle BBQ, 5.5 oz",
+          "qty": "1",
+          "price": 3.99,
+          "who": "Jessica",
+          "note": "Check seasoning \u00b7 ASIN B08Y6FTGTN"
+        },
+        {
+          "id": "wf-add-churro",
+          "name": "Siete Cinnamon Churro Strips, 5 oz",
+          "qty": "1",
+          "price": 4.99,
+          "who": "Jessica",
+          "note": "ASIN B08KVJW5W9"
+        },
+        {
+          "id": "wf-add-goodcrisp",
+          "name": "The Good Crisp Original, 5.64 oz",
+          "qty": "1",
+          "price": 4.69,
+          "who": "Jessica",
+          "note": "FLAG: check label for corn/soy (rice-bran/dextrose-type ingredients possible; not verified) \u00b7 ASIN B07C6P9Y1H"
+        },
+        {
+          "id": "wf-add-larabar",
+          "name": "Larabar Almond Butter Chocolate Chip, 1.6 oz",
+          "qty": "2",
+          "price": 1.99,
+          "who": "Jessica",
+          "note": "FLAG: chocolate chips may contain soy lecithin; not verified \u00b7 ASIN B07FTSJDK9"
+        },
+        {
+          "id": "wf-add-aloha",
+          "name": "Aloha Protein Bar Chocolate Chip Cookie Dough, 5 pk",
+          "qty": "1",
+          "price": 13.99,
+          "who": "Jessica",
+          "note": "Soy-free per order note; check tapioca fiber/corn \u00b7 ASIN B0BXBKCK5X"
+        },
+        {
+          "id": "wf-add-littlerae",
+          "name": "Little Rae's No Tricks Cookies, 8 oz",
+          "qty": "1",
+          "price": 8.99,
+          "who": "Jessica, Layla",
+          "note": "FLAG: label not verified for corn/soy \u00b7 ASIN B0B69SGJTM"
+        },
+        {
+          "id": "wf-add-simplemills-mix",
+          "name": "Simple Mills Almond Flour Banana Muffin Mix, 9 oz",
+          "qty": "1",
+          "price": 8.29,
+          "who": "Jessica",
+          "note": "ASIN B00O1KPESI"
+        },
+        {
+          "id": "wf-add-renewal-mix",
+          "name": "Renewal Mill Sugar Cookie Mix, 15 oz",
+          "qty": "1",
+          "price": 6.17,
+          "who": "Jessica",
+          "note": "Check GF status \u00b7 ASIN B0921CC4LW"
+        },
+        {
+          "id": "wf-add-365-cake",
+          "name": "365 Classic Yellow Cake Mix, 16 oz",
+          "qty": "1",
+          "price": 4.39,
+          "who": "Layla",
+          "note": "Likely contains wheat, NOT for Jessica \u00b7 ASIN B07D6SZBDS"
+        },
+        {
+          "id": "wf-add-cacao",
+          "name": "Navitas Organic Cacao Powder, 8 oz",
+          "qty": "1",
+          "price": 11.79,
+          "who": "All",
+          "note": "ASIN B00CEOOZK6"
+        },
+        {
+          "id": "wf-add-shiitake",
+          "name": "Mushroom King Organic Sliced Shiitake, 4 oz",
+          "qty": "1",
+          "price": 6.99,
+          "who": "Jessica",
+          "note": "Jessica/others only. Dan avoids mushrooms \u00b7 ASIN B07D7CY5DF"
+        },
+        {
+          "id": "wf-add-yucatan-guac",
+          "name": "Yucatan Organic Guacamole, 8 oz",
+          "qty": "1",
+          "price": 5.49,
+          "who": "All",
+          "note": "Label not checked for Jessica \u00b7 ASIN B00CIJL2TE"
+        },
+        {
+          "id": "wf-add-garlic",
+          "name": "Organic garlic",
+          "qty": "0.25",
+          "price": 6.99,
+          "who": "All",
+          "note": "Qty is lb \u00b7 ASIN B0035APRLO",
+          "step": 0.25,
+          "min_qty": 0.25
+        },
+        {
+          "id": "wf-add-undercover",
+          "name": "Undercover Quinoa Dark Chocolate Crisps, Pumpkin Spice, 3 oz",
+          "qty": "1",
+          "price": 4.99,
+          "who": "Jessica",
+          "note": "Seasonal \u00b7 FLAG: possible soy lecithin in chocolate; check label \u00b7 ASIN B0D5B8BRMH"
+        },
+        {
+          "id": "wf-add-ottos",
+          "name": "Otto's Naturals Grain-Free Baking Powder, 8 oz",
+          "qty": "1",
+          "price": 7.09,
+          "who": "Jessica",
+          "note": "Corn-free baking powder \u00b7 ASIN B09TG9LCKF"
+        },
+        {
+          "id": "wf-add-corn",
+          "name": "Bi-color sweet corn (each)",
+          "qty": "1",
+          "price": 0.69,
+          "who": "Dan, Layla",
+          "note": "CORN: NOT for Jessica \u00b7 ASIN B000P7BJMQ"
+        },
+        {
+          "id": "wf-add-pizza",
+          "name": "Pizza slice (prepared foods)",
+          "qty": "1",
+          "price": 3.99,
+          "who": "Dan, Layla",
+          "note": "Treat \u00b7 wheat/dairy: NOT for Jessica; high sat fat for Dan"
+        },
+        {
+          "id": "wf-add-lentils",
+          "name": "Aurora Organic Brown Lentils, 22 oz",
+          "qty": "1",
+          "price": 7.49,
+          "who": "Dan",
+          "note": "LDL-friendly \u00b7 ASIN B07DRJ81TG"
+        },
+        {
+          "id": "wf-add-jovial-farfalle",
+          "name": "Jovial Brown Rice Farfalle, 12 oz",
+          "qty": "1",
+          "price": 5.29,
+          "who": "Jessica, Layla",
+          "note": "GF brown rice pasta \u00b7 2 orders \u00b7 ASIN B01FUZMVOC"
+        },
+        {
+          "id": "wf-add-jovial-bucatini",
+          "name": "Jovial Brown Rice Bucatini, 10 oz",
+          "qty": "1",
+          "price": 5.29,
+          "who": "Jessica, Layla",
+          "note": "GF brown rice pasta \u00b7 ASIN B0D8WSVSWM"
+        },
+        {
+          "id": "wf-add-jovial-elbows",
+          "name": "Jovial Brown Rice Elbows, 12 oz",
+          "qty": "1",
+          "price": 5.29,
+          "who": "Jessica, Layla",
+          "note": "GF brown rice pasta \u00b7 ASIN B01FUZMVQ0"
+        },
+        {
+          "id": "wf-add-oj",
+          "name": "Uncle Matt's Ultimate Defense Orange Juice, 52 oz",
+          "qty": "1",
+          "price": 8.99,
+          "who": "All",
+          "note": "ASIN B07MD6N2CL"
+        },
+        {
+          "id": "wf-add-grapes",
+          "name": "Red seedless grapes, 48 oz",
+          "qty": "1",
+          "price": 8.49,
+          "who": "All",
+          "note": "ASIN B097NPL6CC"
+        },
+        {
+          "id": "wf-add-onion",
+          "name": "Yellow onion",
+          "qty": "1",
+          "price": 1.79,
+          "who": "All",
+          "note": "Qty is lb",
+          "step": 0.5,
+          "min_qty": 0.5
+        },
+        {
+          "id": "wf-add-chobani",
+          "name": "Chobani Greek Yogurt Monterey Strawberry, 5.3 oz",
+          "qty": "1",
+          "price": 1.39,
+          "who": "Dan, Layla",
+          "note": "Dairy, not for Jessica \u00b7 ASIN B07CN36J65"
+        },
+        {
+          "id": "wf-add-fage",
+          "name": "Fage 2% Greek Yogurt with Honey, 5.3 oz",
+          "qty": "1",
+          "price": 1.79,
+          "who": "Dan, Layla",
+          "note": "Dairy, not for Jessica"
+        },
+        {
+          "id": "wf-add-sparkling",
+          "name": "365 Sparkling Water, 33.8 oz",
+          "qty": "1",
+          "price": 0.69,
+          "who": "All",
+          "note": "ASIN B074Y4FFM8"
+        },
+        {
+          "id": "wf-add-jessicas-granola-choc",
+          "name": "Jessica's Natural Foods GF Granola, Chocolate Chip, 11 oz",
+          "qty": "1",
+          "price": 8.99,
+          "who": "Jessica",
+          "note": "GF \u00b7 FLAG: check chocolate for soy lecithin \u00b7 ASIN B07ZZTMMBL"
+        },
+        {
+          "id": "wf-add-jessicas-granola-cherry",
+          "name": "Jessica's Natural Foods GF Granola, Almond Cherry, 11 oz",
+          "qty": "1",
+          "price": 8.99,
+          "who": "Jessica",
+          "note": "GF \u00b7 label not checked for corn/soy \u00b7 ASIN B07ZZT71HH"
+        },
+        {
+          "id": "wf-add-creamer-vanilla",
+          "name": "Califia Vanilla Creme Coconut Creamer, 25.4 oz",
+          "qty": "1",
+          "price": 6.49,
+          "who": "Jessica",
+          "note": "Label not checked (gellan/lecithin possible) \u00b7 ASIN B0GPFHD13W"
+        },
+        {
+          "id": "wf-add-aloha-single",
+          "name": "Aloha Protein Bars, singles (assorted)",
+          "qty": "1",
+          "price": 2.99,
+          "who": "Jessica",
+          "note": "Soy-free per order note; flavors B0G3CGLZRM, B0F9FW32RD, B0795D5G91"
+        },
+        {
+          "id": "wf-add-smash-jam",
+          "name": "Smash grape jam, single",
+          "qty": "1",
+          "price": 0.99,
+          "who": "Layla",
+          "note": "Label not checked"
+        },
+        {
+          "id": "wf-add-cheese-pizza",
+          "name": "WF whole cheese pizza",
+          "qty": "1",
+          "price": 12.0,
+          "who": "Dan, Layla",
+          "note": "Treat \u00b7 wheat/dairy: NOT for Jessica; high sat fat for Dan"
+        },
+        {
+          "id": "wf-add-oyster",
+          "name": "365 Oyster Crackers",
+          "qty": "1",
+          "price": 2.79,
+          "who": "Dan, Layla",
+          "note": "Wheat: NOT for Jessica"
+        },
+        {
+          "id": "wf-add-cascadian",
+          "name": "Cascadian Farm Cookies 'n Creme Granola",
+          "qty": "1",
+          "price": 6.29,
+          "who": "Dan, Layla",
+          "note": "NOT for Jessica (wheat/soy likely)"
+        },
+        {
+          "id": "wf-add-layla-pouch",
+          "name": "Stonyfield Kids yogurt pouch, 3.5 oz",
+          "qty": "3",
+          "price": 2.19,
+          "who": "Layla",
+          "note": "Layla \u00b7 Flavors: blueberry (B075LYR6Y4), strawberry (B00MYUQB3O), vanilla whole milk (B00MYUQ5PS). Dairy"
+        },
+        {
+          "id": "wf-add-layla-applesauce",
+          "name": "365 Organic Unsweetened Applesauce Cups, 6 pk",
+          "qty": "1",
+          "price": 4.09,
+          "who": "Layla",
+          "note": "Layla \u00b7 ASIN B00L7F9VIY"
+        },
+        {
+          "id": "wf-add-layla-smoothie",
+          "name": "Stonyfield Probiotic Smoothies Wild Berry, 4 ct",
+          "qty": "1",
+          "price": 6.99,
+          "who": "Layla",
+          "note": "Layla \u00b7 dairy \u00b7 ASIN B00108GRPS"
+        },
+        {
+          "id": "wf-add-layla-stonyfield-tubes",
+          "name": "Stonyfield Kids Yogurt Tubes, 8 ct",
+          "qty": "1",
+          "price": 5.79,
+          "who": "Layla",
+          "note": "Layla \u00b7 dairy \u00b7 flavors: Cherry & Berry (B000QJDYSA), Strawberry (B000QJGLHG)"
+        },
+        {
+          "id": "wf-add-layla-craize",
+          "name": "Craize Sweet Corn Crisps, 4 oz",
+          "qty": "1",
+          "price": 4.99,
+          "who": "Layla",
+          "note": "Layla \u00b7 CONTAINS CORN, NOT for Jessica \u00b7 ASIN B07V3RTLSN"
+        },
+        {
+          "id": "wf-add-layla-sensible",
+          "name": "Sensible Portions Garden Veggie Ghosts & Bats, 12 ct",
+          "qty": "1",
+          "price": 11.49,
+          "who": "Layla",
+          "note": "Layla \u00b7 seasonal \u00b7 FLAG: likely corn starch, NOT for Jessica \u00b7 ASIN B01MCYPF9J"
+        },
+        {
+          "id": "wf-add-layla-annies",
+          "name": "Annie's Bunnies & Bats Fruit Snacks, 22 ct",
+          "qty": "1",
+          "price": 14.69,
+          "who": "Layla",
+          "note": "Layla \u00b7 seasonal \u00b7 FLAG: check corn syrup/starch \u00b7 ASIN B0F5188SVD"
+        },
+        {
+          "id": "wf-add-layla-amara",
+          "name": "Amara Organic Fruit Bites, Strawberry",
+          "qty": "1",
+          "price": 7.09,
+          "who": "Layla",
+          "note": "Layla \u00b7 ASIN B0DYVR2QX4"
+        },
+        {
+          "id": "wf-add-layla-ouaf-mango",
+          "name": "Once Upon a Farm Coco for Mangoes Smoothie, 4 oz",
+          "qty": "1",
+          "price": 3.39,
+          "who": "Layla",
+          "note": "Layla \u00b7 ASIN B08C5639L4"
+        },
+        {
+          "id": "wf-add-layla-ouaf-cherry",
+          "name": "Once Upon a Farm Apple Cherry Elderberry, 3.2 oz",
+          "qty": "1",
+          "price": 3.79,
+          "who": "Layla",
+          "note": "Layla \u00b7 ASIN B08NGD1Y4V"
+        },
+        {
+          "id": "wf-add-layla-hb-pears-kale",
+          "name": "Happy Baby Stage 2 Pears Kale Spinach, 4 oz",
+          "qty": "1",
+          "price": 1.89,
+          "who": "Layla",
+          "note": "Layla greens (healthier pick) \u00b7 ASIN B0781VL5X1"
+        },
+        {
+          "id": "wf-add-layla-hb-greenbeans",
+          "name": "Happy Baby Stage 2 Green Beans Pears Spinach, 4 oz",
+          "qty": "1",
+          "price": 1.89,
+          "who": "Layla",
+          "note": "Layla greens (healthier pick) \u00b7 ASIN B07D4PVM8F"
+        },
+        {
+          "id": "wf-add-layla-hb-sweetpotato",
+          "name": "Happy Baby Stage 2 Sweet Potato Olive Oil Rosemary, 4 oz",
+          "qty": "1",
+          "price": 1.89,
+          "who": "Layla",
+          "note": "Layla veggies (healthier pick) \u00b7 ASIN B08Q5X542J"
+        },
+        {
+          "id": "wf-add-layla-yogis",
+          "name": "Happy Baby Yogis Mixed Berry, 1 oz",
+          "qty": "1",
+          "price": 5.19,
+          "who": "Layla",
+          "note": "Layla \u00b7 dairy \u00b7 ASIN B003OKPZAS"
+        },
+        {
+          "id": "wf-add-layla-cerebelly",
+          "name": "Cerebelly Sweet Potato Mango, 4 oz",
+          "qty": "1",
+          "price": 3.99,
+          "who": "Layla",
+          "note": "Layla \u00b7 ASIN B081QXZFGF"
+        },
+        {
+          "id": "wf-add-layla-horizon",
+          "name": "Horizon Organic DHA Omega-3 Reduced Fat 2% Milk, 64 oz",
+          "qty": "1",
+          "price": 6.79,
+          "who": "Layla",
+          "note": "Layla \u00b7 dairy \u00b7 ASIN B001RNA658"
+        },
+        {
+          "id": "wf-add-layla-goodles",
+          "name": "Goodles Loopdy-Loos, 8 oz",
+          "qty": "1",
+          "price": 4.39,
+          "who": "Layla",
+          "note": "Layla \u00b7 wheat/dairy, NOT for Jessica \u00b7 ASIN B0BNNSGPVG"
+        },
+        {
+          "id": "wf-add-layla-yumearth",
+          "name": "YumEarth Organic Gummy Bears, 15 pk",
+          "qty": "1",
+          "price": 12.99,
+          "who": "Layla",
+          "note": "Layla \u00b7 ASIN B08PX4Y38V"
+        }
+      ]
+    }
   ]
 }

@@ -1,0 +1,278 @@
+{
+  "valid": "Oct 28, 2026 to Nov 03, 2026",
+  "store": "Whole Foods Market - Glastonbury CT (store-id 10336)",
+  "flyer_run_id": null,
+  "source": "wholefoodsmarket.com/sales-flyer?store-id=10336 (__NEXT_DATA__ promotions)",
+  "matched": {
+    "wf-b-raspberries": {
+      "circular_name": "Raspberries, 6 oz",
+      "sale_price": 3.33,
+      "sale_display": "2/ $6.67",
+      "sale_unit": "EA",
+      "qty_for": 2,
+      "regular_price": 4.99,
+      "score": 1.0,
+      "prime_price": "2 for $6"
+    },
+    "wf-core-avocados": {
+      "circular_name": "Medium Hass Avocados",
+      "sale_price": 1.39,
+      "sale_display": "4/ $5.56",
+      "sale_unit": "EA",
+      "qty_for": 4,
+      "regular_price": 1.49,
+      "score": 1.0,
+      "prime_price": "4 for $5"
+    },
+    "wf-core-blueberries": {
+      "circular_name": "Jumbo Blueberries, 9.8 oz",
+      "sale_price": 6.66,
+      "sale_display": "$6.66 ea",
+      "sale_unit": "EA",
+      "qty_for": 1,
+      "regular_price": 7.99,
+      "score": 1.0,
+      "prime_price": "$5.99 ea"
+    }
+  },
+  "suggestions": [
+    {
+      "name": "Orange or Red Sweet Potatoes",
+      "sale": {
+        "price": 2.54,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$2.54/lb",
+        "unit_price": 2.54,
+        "regular": "$2.99/lb",
+        "prime": "$2.29/lb"
+      },
+      "flyer_item_id": "569c8e69-fc54-4380-ae61-f162a81554c0",
+      "raw": "Orange or Red Sweet Potatoes. $2.54/lb (reg $2.99/lb)",
+      "score": 65.0,
+      "reasons": [
+        "produce:orange",
+        "Dan plan"
+      ],
+      "id": "sug-569c8e69"
+    },
+    {
+      "name": "Blood Oranges",
+      "sale": {
+        "price": 2.77,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$2.77/lb",
+        "unit_price": 2.77,
+        "regular": "$2.99/lb",
+        "prime": "$2.49/lb"
+      },
+      "flyer_item_id": "ed3a9db7-21f1-4c58-8fbf-677eab824b63",
+      "raw": "Blood Oranges. $2.77/lb (reg $2.99/lb)",
+      "score": 65.0,
+      "reasons": [
+        "produce:oranges",
+        "Dan plan"
+      ],
+      "id": "sug-ed3a9db7"
+    },
+    {
+      "name": "Granny Smith Apples",
+      "sale": {
+        "price": 2.77,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$2.77/lb",
+        "unit_price": 2.77,
+        "regular": "$2.99/lb",
+        "prime": "$2.49/lb"
+      },
+      "flyer_item_id": "14106ba3-230b-400b-b5c1-4dc073cf70ff",
+      "raw": "Granny Smith Apples. $2.77/lb (reg $2.99/lb)",
+      "score": 65.0,
+      "reasons": [
+        "produce:apples",
+        "Dan plan"
+      ],
+      "id": "sug-14106ba3"
+    },
+    {
+      "name": "Honeycrisp Apples",
+      "sale": {
+        "price": 3.32,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$3.32/lb",
+        "unit_price": 3.32,
+        "regular": "$3.99/lb",
+        "prime": "$2.99/lb"
+      },
+      "flyer_item_id": "84d5e42d-0c8f-47f3-8500-dd544a56ec9f",
+      "raw": "Honeycrisp Apples. $3.32/lb (reg $3.99/lb)",
+      "score": 65.0,
+      "reasons": [
+        "produce:apples",
+        "Dan plan"
+      ],
+      "id": "sug-84d5e42d"
+    },
+    {
+      "name": "Large Hass Avocados",
+      "sale": {
+        "price": 5.56,
+        "qty_for": 2,
+        "unit": "EA",
+        "display": "2/ $5.56",
+        "unit_price": 2.78,
+        "regular": "$2.99",
+        "prime": "2 for $5"
+      },
+      "flyer_item_id": "37ca8f09-3d2e-4e47-952b-1fdfb7a53592",
+      "raw": "Large Hass Avocados. 2 for $5.56 (reg $2.99)",
+      "score": 45.0,
+      "reasons": [
+        "produce:avocados"
+      ],
+      "id": "sug-37ca8f09"
+    },
+    {
+      "name": "Red, Bosc or Bartlett Pears",
+      "sale": {
+        "price": 2.99,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$2.99/lb",
+        "unit_price": 2.99,
+        "regular": "$3.29/lb",
+        "prime": "$2.69/lb"
+      },
+      "flyer_item_id": "cca13b8e-c629-4168-8999-0733a40a826d",
+      "raw": "Red, Bosc or Bartlett Pears. $2.99/lb (reg $3.29/lb)",
+      "score": 45.0,
+      "reasons": [
+        "produce:pears"
+      ],
+      "id": "sug-cca13b8e"
+    },
+    {
+      "name": "Bagged Hass Avocados, 4 ct",
+      "sale": {
+        "price": 3.88,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$3.88 ea",
+        "unit_price": 3.88,
+        "regular": "$3.99",
+        "prime": "$3.49 ea"
+      },
+      "flyer_item_id": "e2b89b58-7c1f-4936-a77b-54ae2384bc6c",
+      "raw": "Bagged Hass Avocados, 4 ct. $3.88 ea (reg $3.99)",
+      "score": 45.0,
+      "reasons": [
+        "produce:avocados"
+      ],
+      "id": "sug-e2b89b58"
+    },
+    {
+      "name": "Mini Cucumbers, 16 oz",
+      "sale": {
+        "price": 4.21,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$4.21 ea",
+        "unit_price": 4.21,
+        "regular": "$4.49",
+        "prime": "$3.79 ea"
+      },
+      "flyer_item_id": "b9360f42-9166-440e-a53e-97b91bcc7782",
+      "raw": "Mini Cucumbers, 16 oz. $4.21 ea (reg $4.49)",
+      "score": 45.0,
+      "reasons": [
+        "produce:cucumbers"
+      ],
+      "id": "sug-b9360f42"
+    },
+    {
+      "name": "Cauliflower",
+      "sale": {
+        "price": 4.43,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "$4.43 ea",
+        "unit_price": 4.43,
+        "regular": "$5.99",
+        "prime": "$3.99 ea"
+      },
+      "flyer_item_id": "59345ce3-7c1d-4104-972b-968e23cfecb7",
+      "raw": "Cauliflower. $4.43 ea (reg $5.99)",
+      "score": 45.0,
+      "reasons": [
+        "produce:cauliflower"
+      ],
+      "id": "sug-59345ce3"
+    },
+    {
+      "name": "Asparagus",
+      "sale": {
+        "price": 6.66,
+        "qty_for": 1,
+        "unit": "LB",
+        "display": "$6.66/lb",
+        "unit_price": 6.66,
+        "regular": "$6.99/lb",
+        "prime": "$5.99/lb"
+      },
+      "flyer_item_id": "08ed2bf1-a88d-462d-b09f-3576dde57db9",
+      "raw": "Asparagus. $6.66/lb (reg $6.99/lb)",
+      "score": 45.0,
+      "reasons": [
+        "produce:asparagus"
+      ],
+      "id": "sug-08ed2bf1"
+    },
+    {
+      "name": "Air-Chilled Bone-In Chicken Split Breasts",
+      "sale": {
+        "price": null,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "16% off",
+        "unit_price": null,
+        "pct_off": 16,
+        "regular": "$4.99 to $5.99/lb",
+        "prime": "25% off"
+      },
+      "flyer_item_id": "4f4d424e-867e-43d7-9bee-fb4929c5f360",
+      "raw": "Air-Chilled Bone-In Chicken Split Breasts. 16% off (reg $4.99 to $5.99/lb)",
+      "score": 38.0,
+      "reasons": [
+        "Dan plan",
+        "lean poultry"
+      ],
+      "id": "sug-4f4d424e"
+    },
+    {
+      "name": "Refrigerated Greek Yogurt Bars",
+      "sale": {
+        "price": null,
+        "qty_for": 1,
+        "unit": "EA",
+        "display": "22% off",
+        "unit_price": null,
+        "pct_off": 22,
+        "regular": "$1.99 to $6.49",
+        "prime": "30% off"
+      },
+      "flyer_item_id": "516c399b-17ae-4a4d-aac4-82216181453e",
+      "raw": "Refrigerated Greek Yogurt Bars. 22% off (reg $1.99 to $6.49)",
+      "score": 34.0,
+      "reasons": [
+        "Dan plan",
+        "Dan greek yogurt"
+      ],
+      "id": "sug-516c399b"
+    }
+  ],
+  "ranking_note": "Same scoring as build_sales.py (score_suggestion): produce and Dan heart-healthy staples, Layla plain pasta/milk, Jessica-safe brands; demote chips/sweets/breaded items/seafood and staples Jessica can't eat.",
+  "catalog_rev": "20261102T002502Z"
+}
